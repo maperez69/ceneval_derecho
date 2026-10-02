@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador y Práctica de Examen - Derecho</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .fade-in { animation: fadeIn 0.4s ease-in-out; }
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: translateY(10px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+        .option-btn { transition: all 0.2s; }
+        .option-btn:hover:not(:disabled) { transform: scale(1.01); border-color: #3b82f6; }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-blue-900 text-white shadow-md p-4 sticky top-0 z-10">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl md:text-2xl font-bold flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                </svg>
+                App de Estudio: Derecho
+            </h1>
+            <button id="btn-home" class="hidden text-sm bg-blue-700 hover:bg-blue-600 px-4 py-2 rounded">
+                Volver al Menú
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto flex-grow p-4 md:p-8 flex justify-center items-start">
+        
+        <!-- VIEW: MENU -->
+        <div id="view-menu" class="w-full max-w-3xl bg-white rounded-xl shadow-lg p-6 md:p-10 fade-in mt-10">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-extrabold text-blue-900 mb-4">¿Cómo deseas estudiar hoy?</h2>
+                <p class="text-slate-600">Selecciona el modo que mejor se adapte a tu fase de estudio basada en tu material.</p>
+            </div>
+
+            <div class="mb-8 flex flex-col items-center bg-slate-50 p-4 rounded-lg border border-slate-200">
+                <label for="subject-select" class="block text-sm font-bold text-slate-700 mb-2">1. Selecciona la materia a estudiar:</label>
+                <select id="subject-select" class="w-full max-w-md bg-white border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 shadow-sm">
+                    <option value="all">Todas las materias (Simulador Global)</option>
+                    <option value="laboral">Derecho Laboral</option>
+                    <option value="civil">Derecho Civil y Familiar</option>
+                    <option value="penal">Derecho Penal</option>
+                    <option value="amparo">Constitucional y Amparo</option>
+                    <option value="mercantil">Derecho Mercantil</option>
+                    <option value="administrativo">Derecho Administrativo</option>
+                    <option value="electoral">Derecho Electoral</option>
+                    <option value="agrario">Derecho Agrario</option>
+                </select>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Modo Práctica -->
+                <div class="border-2 border-slate-200 rounded-xl p-6 hover:border-blue-500 hover:shadow-md transition-all cursor-pointer flex flex-col items-center text-center group" onclick="app.startPractice()">
+                    <div class="bg-blue-100 p-4 rounded-full text-blue-600 mb-4 group-hover:scale-110 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">Práctica Exhaustiva</h3>
+                    <p class="text-slate-500 text-sm flex-grow">Resuelve las preguntas una por una sin límite de tiempo. Recibe retroalimentación inmediata para saber si tu respuesta es correcta.</p>
+                    <button class="mt-4 w-full bg-blue-50 text-blue-700 font-semibold py-2 rounded-lg group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        Iniciar Práctica
+                    </button>
+                </div>
+
+                <!-- Modo Simulador -->
+                <div class="border-2 border-slate-200 rounded-xl p-6 hover:border-purple-500 hover:shadow-md transition-all cursor-pointer flex flex-col items-center text-center group" onclick="app.startExam()">
+                    <div class="bg-purple-100 p-4 rounded-full text-purple-600 mb-4 group-hover:scale-110 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">Simulador de Examen</h3>
+                    <p class="text-slate-500 text-sm flex-grow">Ponte a prueba. Las preguntas se presentan aleatoriamente. Sin retroalimentación hasta el final y con un temporizador activo.</p>
+                    <button class="mt-4 w-full bg-purple-50 text-purple-700 font-semibold py-2 rounded-lg group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                        Iniciar Simulador
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW: QUESTION -->
+        <div id="view-question" class="w-full max-w-3xl bg-white rounded-xl shadow-lg p-6 md:p-8 hidden fade-in">
+            
+            <!-- Context Header -->
+            <div class="flex justify-between items-center mb-6 pb-4 border-b border-slate-100">
+                <span id="q-counter" class="text-sm font-bold text-slate-500 uppercase tracking-wider">Pregunta 1 de 10</span>
+                <span id="q-timer" class="text-sm font-mono bg-slate-100 px-3 py-1 rounded-md text-slate-700 hidden flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    <span id="time-display">00:00</span>
+                </span>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="w-full bg-slate-200 rounded-full h-2 mb-8">
+                <div id="q-progress" class="bg-blue-600 h-2 rounded-full transition-all duration-300" style="width: 10%"></div>
+            </div>
+
+            <!-- Question Text -->
+            <h2 id="q-text" class="text-lg md:text-xl font-medium text-slate-800 mb-8 leading-relaxed">
+                Texto de la pregunta aquí...
+            </h2>
+
+            <!-- Options -->
+            <div id="q-options" class="flex flex-col gap-3 mb-8">
+                <!-- Options injected via JS -->
+            </div>
+
+            <!-- Footer / Controls -->
+            <div class="flex justify-end pt-4 border-t border-slate-100">
+                <button id="btn-next" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-sm disabled:opacity-50 disabled:cursor-not-allowed transition-all" onclick="app.nextQuestion()" disabled>
+                    Siguiente
+                </button>
+            </div>
+        </div>
+
+        <!-- VIEW: RESULTS -->
+        <div id="view-results" class="w-full max-w-4xl bg-white rounded-xl shadow-lg p-6 md:p-10 hidden fade-in">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-extrabold text-slate-800 mb-2">¡Evaluación Completada!</h2>
+                <p class="text-slate-500">Aquí tienes el resumen de tu desempeño.</p>
+            </div>
+
+            <!-- Score Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                <div class="bg-blue-50 rounded-xl p-6 text-center border border-blue-100">
+                    <p class="text-blue-500 text-sm font-bold uppercase mb-1">Calificación</p>
+                    <p id="res-score" class="text-4xl font-extrabold text-blue-700">80%</p>
+                </div>
+                <div class="bg-green-50 rounded-xl p-6 text-center border border-green-100">
+                    <p class="text-green-500 text-sm font-bold uppercase mb-1">Aciertos</p>
+                    <p id="res-correct" class="text-4xl font-extrabold text-green-700">8</p>
+                </div>
+                <div class="bg-red-50 rounded-xl p-6 text-center border border-red-100">
+                    <p class="text-red-500 text-sm font-bold uppercase mb-1">Errores</p>
+                    <p id="res-incorrect" class="text-4xl font-extrabold text-red-700">2</p>
+                </div>
+            </div>
+
+            <h3 class="text-xl font-bold text-slate-800 mb-4 border-b pb-2">Revisión de Preguntas</h3>
+            
+            <!-- Detailed Review List -->
+            <div id="res-details" class="space-y-4 mb-8 max-h-96 overflow-y-auto pr-2">
+                <!-- Details injected via JS -->
+            </div>
+
+            <div class="flex justify-center mt-8">
+                <button class="bg-blue-900 hover:bg-blue-800 text-white font-bold py-3 px-8 rounded-lg shadow-md transition-all" onclick="app.showMenu()">
+                    Volver al Menú Principal
+                </button>
+            </div>
+        </div>
+
+        <!-- MODAL CUSTOM ALERTS -->
+        <div id="custom-modal" class="hidden fixed inset-0 bg-slate-900 bg-opacity-50 z-50 flex items-center justify-center fade-in">
+            <div class="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full text-center mx-4">
+                <div class="text-amber-500 mb-4 flex justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 mb-2">Sin preguntas suficientes</h3>
+                <p class="text-slate-600 mb-6">Aún no hay preguntas cargadas en la base de datos para esta materia específica. Por favor, selecciona otra materia o agrega más reactivos en el código.</p>
+                <button onclick="document.getElementById('custom-modal').classList.add('hidden')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded-lg transition-colors">
+                    Entendido
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- APP LOGIC -->
+    <script>
+        /* =========================================================================
+           BASE DE DATOS DE PREGUNTAS
+           Aquí puedes agregar todas las preguntas de tus PDFs.
+           Como el PDF sin respuestas no indicaba visualmente cuál era la correcta, 
+           he colocado 'a', 'b', o 'c' de forma ilustrativa. 
+           Por favor, AJUSTA el valor de "correct" según tu clave de respuestas.
+           ========================================================================= */
+        const questionDatabase = [
+            {
+                id: 1,
+                subject: 'laboral',
+                text: "Un empleado de una empresa de seguridad ha laborado horas extraordinarias a las establecidas en su jornada laboral y no le han sido pagadas. El empleado se encuentra inconforme y ya reclamó a sus superiores, sin recibir respuesta alguna, ¿cuál es la vía que deberá detonar para obtener una solución a su inconformidad?",
+                options: [
+                    { id: 'a', text: "Conciliación" },
+                    { id: 'b', text: "Negociación" },
+                    { id: 'c', text: "Arbitraje" }
+                ],
+                correct: 'a' 
+            },
+            {
+                id: 2,
+                subject: 'laboral',
+                text: "Un trabajador promueve tres juicios en contra del mismo demandado, en los cuales reclama la reinstalación y salarios caídos, por lo que solicita la acumulación del expediente. La autoridad hace caso omiso y dicta el laudo correspondiente. Identifique la vía correspondiente para impugnar dicha resolución.",
+                options: [
+                    { id: 'a', text: "Amparo indirecto" },
+                    { id: 'b', text: "Amparo directo" },
+                    { id: 'c', text: "Apelación" }
+                ],
+                correct: 'b' 
+            },
+            {
+                id: 3,
+                subject: 'amparo',
+                text: "A una trabajadora se le niega la prestación del servicio médico, durante su embarazo, en el Instituto Mexicano del Seguro Social. Argumenta que es negativa debido a que fue dada de baja por su patrón ante el IMSS. Identifique la vía procedente para la cual sea exigible los derechos humanos violados.",
+                options: [
+                    { id: 'a', text: "Amparo indirecto" },
+                    { id: 'b', text: "Amparo directo" },
+                    { id: 'c', text: "Queja en contra del IMSS" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 4,
+                subject: 'laboral',
+                text: "Al cumplir 20 años de servicio en una empresa, un trabajador decide voluntariamente separase de su trabajo y exige al patrón el pago de doce días por cada año de salario, identifique la prestación laboral descrita en el planteamiento.",
+                options: [
+                    { id: 'a', text: "Prima de antigüedad" },
+                    { id: 'b', text: "Aguinaldo" },
+                    { id: 'c', text: "Finiquito" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 5,
+                subject: 'laboral',
+                text: "Ante la negativa del propietario de una empresa textil a firmar el contrato colectivo de trabajo propuesto por el sindicato que cuenta con constancia de representatividad, las personas trabajadoras que la integran, han decidido ejercer su derecho de huelga en términos de la ley; para que dicha huelga se considere procedente y existente es necesario que el sindicato...",
+                options: [
+                    { id: 'a', text: "agote la etapa de conciliación prejudicial obligatoria en el centro de conciliación" },
+                    { id: 'b', text: "avise en la empresa con mínimo 10 días de suspender sus actividades" },
+                    { id: 'c', text: "acredite que representa la mayoría de las personas trabajadoras" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 6,
+                subject: 'civil',
+                text: "En un juicio civil en el que se reclama el cumplimiento de un contrato, se dictó el auto admisorio de pruebas en el que se niega la admisión de una prueba por lo que el afectado decide impugnar la resolución. ¿Cuál es medio de impugnación procedente?",
+                options: [
+                    { id: 'a', text: "Denegación de apelación" },
+                    { id: 'b', text: "Revocación" },
+                    { id: 'c', text: "Apelación" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 7,
+                subject: 'civil',
+                text: "Complete la oración. Cuando el testador solo transmita parte de sus bienes a sus herederos mediante sucesión _______ la parte de la que no dispuso constituirá el haber de la sucesión _______; en caso de que los herederos estén de acuerdo con la herencia la partición podrá ser _______.",
+                options: [
+                    { id: 'a', text: "notarial - legitima - testamentaria" },
+                    { id: 'b', text: "legitima - testamentaria - notarial" },
+                    { id: 'c', text: "testamentaria - legitima - notarial" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 8,
+                subject: 'civil',
+                text: "Una persona encuentra en el patio de su domicilio una notificación a su nombre emitida por el juzgado de distrito. Se trata de un escrito de demanda incoada en su contra por la Secretaría de Economía. Por los requisitos del proceso civil federal, el emplazamiento es inválido debido a que...",
+                options: [
+                    { id: 'a', text: "no se realizó personalmente con el interesado" },
+                    { id: 'b', text: "no se dejó el citatorio del interesado con algún familiar o vecino" },
+                    { id: 'c', text: "se realizó en un día inhábil para el emplazamiento" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 9,
+                subject: 'civil',
+                text: "En una controversia federal de arrendamiento inmobiliario, la autoridad judicial de primera instancia resolvió desechar la prueba confesional ofrecida por no ser considerada idónea. ¿Cuál es el medio de impugnación procedente contra tal determinación judicial?",
+                options: [
+                    { id: 'a', text: "Apelación" },
+                    { id: 'b', text: "Queja" },
+                    { id: 'c', text: "Revocación" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 10,
+                subject: 'civil',
+                text: "Durante el procedimiento de un divorcio, la autoridad jurisdiccional ha emitido una determinación referente a las medidas provisionales pertinentes, ante la cual una persona decide inconformarse. Determine el medio de impugnación que procede para combatir la decisión judicial en el proceso familiar.",
+                options: [
+                    { id: 'a', text: "Apelación" },
+                    { id: 'b', text: "Queja" },
+                    { id: 'c', text: "Revocación" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 11,
+                subject: 'mercantil',
+                text: "En un juicio ejecutivo mercantil, con una cuantía de $300,000.00, que se encontraba en etapa de desahogo de pruebas, se decretó de oficio la caducidad de la instancia. ¿Cuál es el medio de impugnación procedente en contra de la resolución que decretó la caducidad de la instancia?",
+                options: [
+                    { id: 'a', text: "Apelación" },
+                    { id: 'b', text: "Revocación" },
+                    { id: 'c', text: "Reposición" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 12,
+                subject: 'penal',
+                text: "Un funcionario público de una entidad federativa, con el apoyo de la fuerza pública, ha impedido la ejecución de un decreto que permite el comercio ambulante en el centro histórico de una ciudad durante todo el mes de septiembre. Identifique la conducta delictiva que corresponde.",
+                options: [
+                    { id: 'a', text: "Abuso de autoridad" },
+                    { id: 'b', text: "Ejercicio ilícito de servicio público" },
+                    { id: 'c', text: "Uso indebido de atribuciones y facultades" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 13,
+                subject: 'penal',
+                text: "En un procedimiento penal con el sistema penal acusatorio, una persona es señalada expresamente como responsable del delito de lesiones, cuya pena máxima no excede de 2 años de presión. El inculpado tiene derecho a ser juzgado en audiencia por un Tribunal de Enjuiciamiento antes de ____ salvo que solicite mayor plazo para su defensa.",
+                options: [
+                    { id: 'a', text: "4 meses" },
+                    { id: 'b', text: "6 meses" },
+                    { id: 'c', text: "1 año" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 14,
+                subject: 'electoral',
+                text: "El día de la jornada electoral una persona se presentó en tiempo a la casilla que le correspondía, con su credencial para votar vigente, para emitir su voto en una elección federal; sin embargo, los funcionarios de la casilla se lo impidieron. El mecanismo constitucional para que la persona afectada individualmente reclame la violación descrita es el juicio...",
+                options: [
+                    { id: 'a', text: "de inconformidad" },
+                    { id: 'b', text: "de revisión constitucional electoral" },
+                    { id: 'c', text: "para la protección de los derechos político-electorales del ciudadano" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 15,
+                subject: 'administrativo',
+                text: "La Secretaría de Educación Pública determinó mediante un procedimiento administrativo que una persona moral que cuenta con el reconocimiento de validez oficial de estudios incumplió con la normativa aplicable. El representante legal de la empresa considera que se debe controvertir el acto de autoridad por la vía correspondiente. ¿Qué recurso jurisdiccional es el procedente para buscar contravenir el acto de autoridad administrativa?",
+                options: [
+                    { id: 'a', text: "Juicio contencioso administrativo" },
+                    { id: 'b', text: "Revisión" },
+                    { id: 'c', text: "Queja" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 16,
+                subject: 'penal',
+                text: "Una persona, aprovechando la relación de confianza que tenía con otra, la drogó y abusó sexualmente de ella, por lo que ésta última presentó una denuncia asistida por su defensor. El derecho que tiene como víctima es a...",
+                options: [
+                    { id: 'a', text: "que se le reciban los medios de prueba que ofrezca" },
+                    { id: 'b', text: "no ser expuesta ante los medios de comunicación" },
+                    { id: 'c', text: "impugnar las omisiones del Ministerio Público como investigador" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 17,
+                subject: 'amparo',
+                text: "Con motivo de un proceso familiar en materia de alimentos, guarda y custodia y régimen de visitas y convivencias, se admitió el amparo indirecto interpuesto en representación de las niñas acreedoras alimentarias contra la...",
+                options: [
+                    { id: 'a', text: "sentencia del juzgado de lo familiar que establece un monto de alimentos inferior al equivalente a los gastos justificados por la actora" },
+                    { id: 'b', text: "resolución del tribunal de alzada que confirma una multa impuesta por no presentar a las niñas a una plática con la autoridad judicial" },
+                    { id: 'c', text: "decisión de la primera instancia de fijar la garantía del pago de alimentos exclusivamente mediante el sueldo de la parte acreedor" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 18,
+                subject: 'administrativo',
+                text: "La federación pretende vender un predio en subasta pública con la finalidad de obtener recursos para su operación. No obstante, un vecino de esa zona se opone, pues considera que a él le pertenece una fracción del terreno que se subastará. Asimismo, un sindicato no está de acuerdo, pues éste había firmado un convenio con la federación para que se le cediera en comodato parte del terreno, pues desea construir en él sus oficinas. Por último, se opone a la subasta una agrupación de colonos que habita desde hace décadas de forma irregular otra fracción del predio. ¿Cuál es el interés legítimo que se afectará con la subasta?",
+                options: [
+                    { id: 'a', text: "El de la agrupación de los colonos" },
+                    { id: 'b', text: "El correspondiente al vecino" },
+                    { id: 'c', text: "El del sindicato comodatario" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 19,
+                subject: 'penal',
+                text: "Una persona acusada del delito de sabotaje fue vinculada a proceso por el juez de control, quien ordenó también la prisión preventiva por tratarse de un delito grave. Al estar inconforme con la determinación, la persona la impugnará mediante una...",
+                options: [
+                    { id: 'a', text: "queja" },
+                    { id: 'b', text: "revocación" },
+                    { id: 'c', text: "apelación" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 20,
+                subject: 'amparo',
+                text: "Un ciudadano tiene conocimiento de una investigación penal que existe en su contra y de una orden de aprehensión para llevarlo ante el juez de control, por lo que decide interponer un juicio de amparo indirecto en virtud de que es...",
+                options: [
+                    { id: 'a', text: "un acto de imposible reparación emitido por la autoridad" },
+                    { id: 'b', text: "una norma heteroaplicativa que vulnera derechos humanos" },
+                    { id: 'c', text: "ilegal el emplazamiento realizado por el Ministerio Público" }
+                ],
+                correct: 'a'
+            }
+            /* 
+               INSTRUCCIONES PARA AÑADIR MÁS PREGUNTAS:
+               Al agregar más preguntas, recuerda agregar la propiedad "subject" 
+               (e.g., 'laboral', 'civil', 'penal', 'amparo', 'mercantil', 'administrativo', 'electoral', 'agrario').
+            */
+        ];
+
+        /* =========================================================================
+           LÓGICA DE LA APLICACIÓN
+           ========================================================================= */
+        const app = {
+            mode: '', // 'practice' | 'exam'
+            questions: [],
+            currentIndex: 0,
+            answers: {}, // Guardará { questionId: selectedOptionId }
+            timerInterval: null,
+            timeElapsed: 0, // en segundos
+
+            // Referencias DOM
+            views: {
+                menu: document.getElementById('view-menu'),
+                question: document.getElementById('view-question'),
+                results: document.getElementById('view-results')
+            },
+            ui: {
+                counter: document.getElementById('q-counter'),
+                progress: document.getElementById('q-progress'),
+                text: document.getElementById('q-text'),
+                options: document.getElementById('q-options'),
+                btnNext: document.getElementById('btn-next'),
+                btnHome: document.getElementById('btn-home'),
+                timerBox: document.getElementById('q-timer'),
+                timeDisplay: document.getElementById('time-display')
+            },
+
+            init() {
+                this.ui.btnHome.addEventListener('click', () => this.showMenu());
+            },
+
+            showView(viewName) {
+                Object.values(this.views).forEach(v => v.classList.add('hidden'));
+                this.views[viewName].classList.remove('hidden');
+                
+                if(viewName === 'menu') {
+                    this.ui.btnHome.classList.add('hidden');
+                } else {
+                    this.ui.btnHome.classList.remove('hidden');
+                }
+            },
+
+            showMenu() {
+                this.stopTimer();
+                this.showView('menu');
+            },
+
+            // Inicia modo Práctica: Todas las preguntas, en orden, con feedback.
+            startPractice() {
+                this.mode = 'practice';
+                const selectedSubject = document.getElementById('subject-select').value;
+                
+                if (selectedSubject === 'all') {
+                    this.questions = [...questionDatabase];
+                } else {
+                    this.questions = questionDatabase.filter(q => q.subject === selectedSubject);
+                }
+
+                if (this.questions.length === 0) {
+                    this.showEmptyState();
+                    return;
+                }
+
+                this.currentIndex = 0;
+                this.answers = {};
+                this.ui.timerBox.classList.add('hidden');
+                this.showView('question');
+                this.renderQuestion();
+            },
+
+            // Inicia modo Simulador: Preguntas aleatorias, sin feedback, con temporizador.
+            startExam() {
+                this.mode = 'exam';
+                const selectedSubject = document.getElementById('subject-select').value;
+                
+                let pool = [];
+                if (selectedSubject === 'all') {
+                    pool = [...questionDatabase];
+                } else {
+                    pool = questionDatabase.filter(q => q.subject === selectedSubject);
+                }
+
+                if (pool.length === 0) {
+                    this.showEmptyState();
+                    return;
+                }
+
+                // Mezclar las preguntas filtradas y tomar una muestra de hasta 20
+                this.questions = pool.sort(() => 0.5 - Math.random()).slice(0, 20);
+                
+                this.currentIndex = 0;
+                this.answers = {};
+                
+                // Configurar Temporizador
+                this.timeElapsed = 0;
+                this.ui.timerBox.classList.remove('hidden');
+                this.updateTimeDisplay();
+                this.timerInterval = setInterval(() => {
+                    this.timeElapsed++;
+                    this.updateTimeDisplay();
+                }, 1000);
+
+                this.showView('question');
+                this.renderQuestion();
+            },
+
+            showEmptyState() {
+                document.getElementById('custom-modal').classList.remove('hidden');
+            },
+
+            stopTimer() {
+                if (this.timerInterval) {
+                    clearInterval(this.timerInterval);
+                    this.timerInterval = null;
+                }
+            },
+
+            updateTimeDisplay() {
+                const mins = String(Math.floor(this.timeElapsed / 60)).padStart(2, '0');
+                const secs = String(this.timeElapsed % 60).padStart(2, '0');
+                this.ui.timeDisplay.textContent = `${mins}:${secs}`;
+            },
+
+            renderQuestion() {
+                const q = this.questions[this.currentIndex];
+                
+                // Actualizar contadores y barra
+                this.ui.counter.textContent = `Pregunta ${this.currentIndex + 1} de ${this.questions.length}`;
+                const progressPct = ((this.currentIndex) / this.questions.length) * 100;
+                this.ui.progress.style.width = `${progressPct}%`;
+                
+                // Texto de la pregunta
+                this.ui.text.textContent = q.text;
+                
+                // Limpiar y generar opciones
+                this.ui.options.innerHTML = '';
+                q.options.forEach(opt => {
+                    const btn = document.createElement('button');
+                    btn.className = "option-btn w-full text-left p-4 border-2 border-slate-200 rounded-lg text-slate-700 font-medium hover:bg-slate-50 focus:outline-none flex items-start gap-3";
+                    btn.innerHTML = `<span class="bg-slate-100 text-slate-500 rounded px-2 py-1 text-sm font-bold uppercase shrink-0">${opt.id}</span> <span>${opt.text}</span>`;
+                    btn.onclick = () => this.selectOption(opt.id, btn);
+                    
+                    // Si el usuario vuelve hacia atrás y ya había respondido (en el futuro si agregamos botón "Atrás")
+                    // O si ya la respondió, la marcamos.
+                    
+                    this.ui.options.appendChild(btn);
+                });
+
+                // Deshabilitar botón Siguiente hasta que responda
+                this.ui.btnNext.disabled = true;
+                if(this.currentIndex === this.questions.length - 1 && this.mode === 'exam') {
+                     this.ui.btnNext.textContent = 'Finalizar Examen';
+                } else {
+                     this.ui.btnNext.textContent = 'Siguiente';
+                }
+            },
+
+            selectOption(optId, btnElement) {
+                const q = this.questions[this.currentIndex];
+                this.answers[q.id] = optId;
+                
+                // Habilitar botón siguiente
+                this.ui.btnNext.disabled = false;
+
+                const allButtons = this.ui.options.querySelectorAll('button');
+
+                if (this.mode === 'practice') {
+                    // MODO PRÁCTICA: Feedback Inmediato
+                    // Deshabilitar todos los botones
+                    allButtons.forEach(b => { b.disabled = true; b.classList.add('opacity-70'); });
+                    
+                    // Evaluar respuesta
+                    if (optId === q.correct) {
+                        btnElement.classList.remove('border-slate-200', 'hover:bg-slate-50', 'opacity-70');
+                        btnElement.classList.add('border-green-500', 'bg-green-50', 'text-green-800', 'opacity-100');
+                        btnElement.querySelector('span').classList.add('bg-green-500', 'text-white');
+                    } else {
+                        // Marcar el error
+                        btnElement.classList.remove('border-slate-200', 'opacity-70');
+                        btnElement.classList.add('border-red-500', 'bg-red-50', 'text-red-800', 'opacity-100');
+                        btnElement.querySelector('span').classList.add('bg-red-500', 'text-white');
+                        
+                        // Buscar y resaltar la correcta
+                        const correctIndex = q.options.findIndex(o => o.id === q.correct);
+                        const correctBtn = allButtons[correctIndex];
+                        correctBtn.classList.remove('border-slate-200', 'opacity-70');
+                        correctBtn.classList.add('border-green-500', 'bg-green-50', 'opacity-100');
+                        correctBtn.querySelector('span').classList.add('bg-green-500', 'text-white');
+                    }
+                } else {
+                    // MODO EXAMEN: Solo selección visual
+                    allButtons.forEach(b => {
+                        b.classList.remove('border-blue-500', 'bg-blue-50');
+                        b.classList.add('border-slate-200');
+                        b.querySelector('span').classList.remove('bg-blue-500', 'text-white');
+                        b.querySelector('span').classList.add('bg-slate-100', 'text-slate-500');
+                    });
+                    
+                    btnElement.classList.remove('border-slate-200');
+                    btnElement.classList.add('border-blue-500', 'bg-blue-50');
+                    btnElement.querySelector('span').classList.remove('bg-slate-100', 'text-slate-500');
+                    btnElement.querySelector('span').classList.add('bg-blue-500', 'text-white');
+                }
+            },
+
+            nextQuestion() {
+                if (this.currentIndex < this.questions.length - 1) {
+                    this.currentIndex++;
+                    this.renderQuestion();
+                } else {
+                    this.finish();
+                }
+            },
+
+            finish() {
+                this.stopTimer();
+                this.showView('results');
+                
+                let correctCount = 0;
+                const detailsContainer = document.getElementById('res-details');
+                detailsContainer.innerHTML = '';
+
+                this.questions.forEach((q, index) => {
+                    const userAnswer = this.answers[q.id];
+                    const isCorrect = userAnswer === q.correct;
+                    if (isCorrect) correctCount++;
+
+                    // Obtener textos para mostrar en la revisión
+                    const correctOptText = q.options.find(o => o.id === q.correct)?.text || '';
+                    const userOptText = userAnswer ? q.options.find(o => o.id === userAnswer)?.text : 'Sin responder';
+
+                    // Construir HTML de revisión
+                    const div = document.createElement('div');
+                    div.className = `p-4 rounded-lg border ${isCorrect ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'}`;
+                    
+                    div.innerHTML = `
+                        <p class="font-bold text-slate-800 mb-2">${index + 1}. ${q.text}</p>
+                        <div class="text-sm">
+                            <p class="${isCorrect ? 'text-green-700' : 'text-red-600'}"><strong>Tu respuesta:</strong> ${userOptText}</p>
+                            ${!isCorrect ? `<p class="text-green-700 mt-1"><strong>Respuesta correcta:</strong> ${correctOptText}</p>` : ''}
+                        </div>
+                    `;
+                    detailsContainer.appendChild(div);
+                });
+
+                // Actualizar tarjetas de puntuación
+                const total = this.questions.length;
+                const scorePct = Math.round((correctCount / total) * 100);
+                
+                document.getElementById('res-score').textContent = `${scorePct}%`;
+                document.getElementById('res-correct').textContent = correctCount;
+                document.getElementById('res-incorrect').textContent = total - correctCount;
+
+                // Color del porcentaje según resultado
+                const scoreEl = document.getElementById('res-score');
+                scoreEl.className = `text-4xl font-extrabold ${scorePct >= 70 ? 'text-green-600' : (scorePct >= 50 ? 'text-yellow-600' : 'text-red-600')}`;
+            }
+        };
+
+        // Inicializar App
+        document.addEventListener('DOMContentLoaded', () => app.init());
+
+    </script>
+</body>
+</html>
