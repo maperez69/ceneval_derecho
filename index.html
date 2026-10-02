@@ -60,6 +60,8 @@
                     <option value="administrativo">Derecho Administrativo</option>
                     <option value="electoral">Derecho Electoral</option>
                     <option value="agrario">Derecho Agrario</option>
+                    <option value="derechos_humanos">Derechos Humanos</option>
+                    <option value="fiscal">Derecho Fiscal</option>
                 </select>
             </div>
 
@@ -86,7 +88,7 @@
                         </svg>
                     </div>
                     <h3 class="text-xl font-bold text-slate-800 mb-2">Simulador de Examen</h3>
-                    <p class="text-slate-500 text-sm flex-grow">Ponte a prueba. Las preguntas se presentan aleatoriamente. Sin retroalimentación hasta el final y con un temporizador activo.</p>
+                    <p class="text-slate-500 text-sm flex-grow">Ponte a prueba con una muestra aleatoria de 20 preguntas. Sin retroalimentación hasta el final y con un temporizador activo.</p>
                     <button class="mt-4 w-full bg-purple-50 text-purple-700 font-semibold py-2 rounded-lg group-hover:bg-purple-600 group-hover:text-white transition-colors">
                         Iniciar Simulador
                     </button>
@@ -175,7 +177,7 @@
                     </svg>
                 </div>
                 <h3 class="text-xl font-bold text-slate-800 mb-2">Sin preguntas suficientes</h3>
-                <p class="text-slate-600 mb-6">Aún no hay preguntas cargadas en la base de datos para esta materia específica. Por favor, selecciona otra materia o agrega más reactivos en el código.</p>
+                <p class="text-slate-600 mb-6">Aún no hay preguntas cargadas en la base de datos para esta materia específica. Por favor, selecciona otra materia o realiza un simulador global.</p>
                 <button onclick="document.getElementById('custom-modal').classList.add('hidden')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded-lg transition-colors">
                     Entendido
                 </button>
@@ -187,11 +189,7 @@
     <!-- APP LOGIC -->
     <script>
         /* =========================================================================
-           BASE DE DATOS DE PREGUNTAS
-           Aquí puedes agregar todas las preguntas de tus PDFs.
-           Como el PDF sin respuestas no indicaba visualmente cuál era la correcta, 
-           he colocado 'a', 'b', o 'c' de forma ilustrativa. 
-           Por favor, AJUSTA el valor de "correct" según tu clave de respuestas.
+           BASE DE DATOS DE PREGUNTAS (160+ Reactivos)
            ========================================================================= */
         const questionDatabase = [
             {
@@ -207,7 +205,7 @@
             },
             {
                 id: 2,
-                subject: 'laboral',
+                subject: 'amparo',
                 text: "Un trabajador promueve tres juicios en contra del mismo demandado, en los cuales reclama la reinstalación y salarios caídos, por lo que solicita la acumulación del expediente. La autoridad hace caso omiso y dicta el laudo correspondiente. Identifique la vía correspondiente para impugnar dicha resolución.",
                 options: [
                     { id: 'a', text: "Amparo indirecto" },
@@ -241,7 +239,18 @@
             {
                 id: 5,
                 subject: 'laboral',
-                text: "Ante la negativa del propietario de una empresa textil a firmar el contrato colectivo de trabajo propuesto por el sindicato que cuenta con constancia de representatividad, las personas trabajadoras que la integran, han decidido ejercer su derecho de huelga en términos de la ley; para que dicha huelga se considere procedente y existente es necesario que el sindicato...",
+                text: "Un trabajador, presentó a través de su representante legal una demanda laboral en contra de su patrón mediante la vía en la que incluyó reclamaciones mixtas que contienen prestaciones independientes entre sí; entre ellas, la seguridad social exigible en varias vías, al considerar que de esta manera se logra una mayor economía procesal",
+                options: [
+                    { id: 'a', text: "Especial" },
+                    { id: 'b', text: "Ordinaria" },
+                    { id: 'c', text: "Sumatoria" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 6,
+                subject: 'laboral',
+                text: "Ante la negativa del propietario de una empresa textil a firmar el contrato colectivo de trabajo propuesto por el sindicato que cuenta con constancia de representatividad, las personas trabajadoras que la integran, han decidido ejercer su derecho de huelga en términos del texto de la Ley Federal del Trabajo; para que dicha huelga se considere procedente y existente es necesario que el sindicato...",
                 options: [
                     { id: 'a', text: "agote la etapa de conciliación prejudicial obligatoria en el centro de conciliación" },
                     { id: 'b', text: "avise en la empresa con mínimo 10 días de suspender sus actividades" },
@@ -250,7 +259,7 @@
                 correct: 'a'
             },
             {
-                id: 6,
+                id: 7,
                 subject: 'civil',
                 text: "En un juicio civil en el que se reclama el cumplimiento de un contrato, se dictó el auto admisorio de pruebas en el que se niega la admisión de una prueba por lo que el afectado decide impugnar la resolución. ¿Cuál es medio de impugnación procedente?",
                 options: [
@@ -261,20 +270,20 @@
                 correct: 'c'
             },
             {
-                id: 7,
+                id: 8,
                 subject: 'civil',
                 text: "Complete la oración. Cuando el testador solo transmita parte de sus bienes a sus herederos mediante sucesión _______ la parte de la que no dispuso constituirá el haber de la sucesión _______; en caso de que los herederos estén de acuerdo con la herencia la partición podrá ser _______.",
                 options: [
                     { id: 'a', text: "notarial - legitima - testamentaria" },
-                    { id: 'b', text: "legitima - testamentaria - notarial" },
+                    { id: 'b', text: "legitima - testamentaria - notaria" },
                     { id: 'c', text: "testamentaria - legitima - notarial" }
                 ],
                 correct: 'c'
             },
             {
-                id: 8,
+                id: 9,
                 subject: 'civil',
-                text: "Una persona encuentra en el patio de su domicilio una notificación a su nombre emitida por el juzgado de distrito. Se trata de un escrito de demanda incoada en su contra por la Secretaría de Economía. Por los requisitos del proceso civil federal, el emplazamiento es inválido debido a que...",
+                text: "Una persona llega a su casa y recibe la visita de su vecino, quien le comenta que encontró en el patio de su domicilio una notificación a su nombre emitida por el juzgado de distrito. Se trata de un escrito de demanda incoada en su contra por la Secretaría de Economía. Por los requisitos del proceso civil federal, el emplazamiento es inválido debido a que...",
                 options: [
                     { id: 'a', text: "no se realizó personalmente con el interesado" },
                     { id: 'b', text: "no se dejó el citatorio del interesado con algún familiar o vecino" },
@@ -283,7 +292,7 @@
                 correct: 'a'
             },
             {
-                id: 9,
+                id: 10,
                 subject: 'civil',
                 text: "En una controversia federal de arrendamiento inmobiliario, la autoridad judicial de primera instancia resolvió desechar la prueba confesional ofrecida por no ser considerada idónea. ¿Cuál es el medio de impugnación procedente contra tal determinación judicial?",
                 options: [
@@ -294,7 +303,7 @@
                 correct: 'a'
             },
             {
-                id: 10,
+                id: 11,
                 subject: 'civil',
                 text: "Durante el procedimiento de un divorcio, la autoridad jurisdiccional ha emitido una determinación referente a las medidas provisionales pertinentes, ante la cual una persona decide inconformarse. Determine el medio de impugnación que procede para combatir la decisión judicial en el proceso familiar.",
                 options: [
@@ -305,9 +314,340 @@
                 correct: 'b'
             },
             {
-                id: 11,
+                id: 12,
+                subject: 'civil',
+                text: "En un juicio ordinario civil, el juzgador dictó sentencia definitiva en la que dejó a salvo los derechos del actor para ejercerlos en la vía que corresponda, pues determinó que quien firmó la demanda carecía de legitimación en la causa, no obstante, se demostró que la persona por quien se compareció a juicio efectivamente era titular de un derecho exigible en esa vía. ¿Cómo debe calificar la resolución descrita en cuanto a su fundamentación jurídica?",
+                options: [
+                    { id: 'a', text: "Debidamente fundada" },
+                    { id: 'b', text: "Indebidamente fundada" },
+                    { id: 'c', text: "Carente de fundamentación" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 13,
                 subject: 'mercantil',
-                text: "En un juicio ejecutivo mercantil, con una cuantía de $300,000.00, que se encontraba en etapa de desahogo de pruebas, se decretó de oficio la caducidad de la instancia. ¿Cuál es el medio de impugnación procedente en contra de la resolución que decretó la caducidad de la instancia?",
+                text: "Durante la audiencia de conciliación ante la Procuraduría Federal del Consumidor, el representante legal de una agencia de viajes aceptó devolver a uno de sus clientes en máximo 30 días naturales $45,000 vía transferencia electrónica, debido a prestación deficiente. Vencido el plazo, la devolución no fue hecha y la empresa dejó de atender llamadas, la persona interpuso demanda vía juicio...",
+                options: [
+                    { id: 'a', text: "oral mercantil" },
+                    { id: 'b', text: "ejecutivo mercantil" },
+                    { id: 'c', text: "ordinario mercantil" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 14,
+                subject: 'mercantil',
+                text: "En un juicio oral mercantil cuya cuantía es de $1,000,000.00, se dictó el auto admisorio de pruebas en el que no se admitió una prueba documental de la parte actora. ¿Cuál es el término perentorio para que esta promueva el recurso procedente?",
+                options: [
+                    { id: 'a', text: "3 días" },
+                    { id: 'b', text: "9 días" },
+                    { id: 'c', text: "6 días" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 15,
+                subject: 'civil',
+                text: "Con base en el siguiente fragmento derivado de un convenio de disolución del vínculo matrimonial, identifique la consecuencia inherente al mismo: 'Las partes reconocen que, en relación con su menor hijo, el progenitor lo llevará al colegio y cubrirá con los gastos de colegiatura, útiles, transporte y demás gastos derivados'",
+                options: [
+                    { id: 'a', text: "Obligación alimentaria" },
+                    { id: 'b', text: "Cláusulas compromisorias" },
+                    { id: 'c', text: "Acuerdo de convivencia" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 16,
+                subject: 'administrativo',
+                text: "Al estudiar una demanda en la que un particular solicitó una indemnización por responsabilidad patrimonial del estado que fue negada por la entidad pública, la magistrada instructora resolvió desecharla por considerar que no se explicaron los criterios para cuantificar la indemnización. Contra el desechamiento, interpuso recurso de reclamación. Uno de los requisitos de procedencia es...",
+                options: [
+                    { id: 'a', text: "Acreditar el nexo entre el acto administrativo y el daño" },
+                    { id: 'b', text: "Interponer el medio de impugnación en máximo diez días" },
+                    { id: 'c', text: "Recusar a la autoridad que admitió el desechamiento" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 17,
+                subject: 'penal',
+                text: "Una persona de 65 años con discapacidad visual y de nacionalidad brasileña es retenida y víctima del delito de trata de personas en su modalidad de mendicidad forzosa. Al ser liberada, las autoridades se dan cuenta de su nacionalidad y la apoyan para un retorno asistido. Seleccione el derecho de la víctima al que corresponde el planteamiento.",
+                options: [
+                    { id: 'a', text: "A recibir gratuitamente la asistencia de un intérprete o traductor" },
+                    { id: 'b', text: "A que se realicen los ajustes al procedimiento penal que sean necesarios" },
+                    { id: 'c', text: "A que se le proporcione asistencia migratoria al tener otra nacionalidad" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 18,
+                subject: 'fiscal',
+                text: "En el ejercicio de la facultad de comprobación, la autoridad fiscal determinó la omisión parcial del pago de la contribución y el posterior cumplimiento a esta omisión dentro de los plazos. Para que la determinación de dicha omisión sea procedente es indispensable cumplir con...",
+                options: [
+                    { id: 'a', text: "el pago de multa y actualizaciones" },
+                    { id: 'b', text: "la presentación de los avisos y las declaraciones" },
+                    { id: 'c', text: "la solicitud de un acuerdo conclusivo" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 19,
+                subject: 'penal',
+                text: "Recibida el alta médica en una clínica privada, una paciente fue visitada por el administrador quien le informó que existía un adeudo y debía permanecer en su habitación hasta liquidar. La paciente observó que en el exterior permaneció un guardia de seguridad privada. Los hechos encuadran en el tipo penal de...",
+                options: [
+                    { id: 'a', text: "Cobranza extrajudicial ilegal" },
+                    { id: 'b', text: "Privación ilegal de la libertad" },
+                    { id: 'c', text: "Responsabilidad profesional" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 20,
+                subject: 'electoral',
+                text: "Una ciudadana se propuso como candidata para un partido político para un cargo de elección popular; sin embargo, la candidatura le fue negada por ser mujer. Ella considera que sus derechos político electorales están siendo violentados. ¿Cuál es el mecanismo constitucional procedente para combatir dicha resolución?",
+                options: [
+                    { id: 'a', text: "Juicio de amparo" },
+                    { id: 'b', text: "Juicio para la protección de los derechos político electorales" },
+                    { id: 'c', text: "Juicio de revisión constitucional electoral" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 21,
+                subject: 'administrativo',
+                text: "El Instituto Mexicano del Seguro Social, resolvió que no era procedente el otorgamiento de una pensión de viudez en beneficio del viudo de una derechohabiente. Dicho particular decide impugnarla. Seleccione el medio de impugnación procedente para combatir dicho acto.",
+                options: [
+                    { id: 'a', text: "Recurso de inconformidad" },
+                    { id: 'b', text: "Recurso de revisión" },
+                    { id: 'c', text: "Queja administrativa" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 22,
+                subject: 'amparo',
+                text: "A una persona acusada de homicidio doloso se le notificó la sentencia definitiva en la que se le absolvió y se decretó su libertad. Una semana después, promovió juicio de amparo directo en contra de la sentencia para fijar indemnización por prisión preventiva. El tribunal lo declaró improcedente. Determine la causal de improcedencia.",
+                options: [
+                    { id: 'a', text: "Consumación irreparable del acto" },
+                    { id: 'b', text: "Consentimiento tácito del acto reclamado" },
+                    { id: 'c', text: "Incumplimiento del principio de definitividad" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 23,
+                subject: 'amparo',
+                text: "Un grupo de habitantes interpuso juicio de amparo indirecto en virtud de subasta pública de cinco predios utilizados como parques recreativos con flora y fauna. El juez de distrito en materia administrativa debe resolver que los quejosos son titulares de un derecho colectivo bajo un interés...",
+                options: [
+                    { id: 'a', text: "simple" },
+                    { id: 'b', text: "legítimo" },
+                    { id: 'c', text: "jurídico" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 24,
+                subject: 'amparo',
+                text: "El tribunal de alzada confirmó la sentencia del juzgado de enjuiciamiento por delito de robo. El sentenciado promovió amparo directo; el MP promovió amparo adhesivo. Para sobreseer dicho recurso por el Tribunal Colegiado, ¿qué causales de improcedencia son aplicables?",
+                options: [
+                    { id: 'a', text: "Cuando subsista el acto reclamado pero no pueda surtir efecto legal alguno" },
+                    { id: 'b', text: "Contra actos que no afecten los intereses jurídicos o legítimos del quejoso y por la falta de interés jurídico del MP" },
+                    { id: 'c', text: "Contra actos cuya ejecución se ha consumado de modo irreparable" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 25,
+                subject: 'amparo',
+                text: "Seleccione la situación en la cual procede el juicio de amparo indirecto.",
+                options: [
+                    { id: 'a', text: "Unos policías catean un domicilio en busca de sustancias, solo por sospecha" },
+                    { id: 'b', text: "Se ha resuelto en segunda instancia un caso de pérdida de patria potestad" },
+                    { id: 'c', text: "Se ha emitido una reforma constitucional sobre inversión extranjera" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 26,
+                subject: 'penal',
+                text: "El juez de control dicta auto de vinculación a proceso a un sicario por hechos distintos a los que fueron motivo de imputación debido a presión mediática. ¿Cuál es el medio de impugnación que su representante legal puede ejercer frente a este acto de autoridad?",
+                options: [
+                    { id: 'a', text: "Revocación" },
+                    { id: 'b', text: "Apelación" },
+                    { id: 'c', text: "Queja" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 27,
+                subject: 'fiscal',
+                text: "El representante legal de una empresa abarrotera solicitó aclaración de una carta invitación fiscal. La autoridad respondió notificando resolución con obligación de pago de ISR supuestamente omitido. Identifique la vía procesal para la impugnación.",
+                options: [
+                    { id: 'a', text: "Juicio contencioso administrativo" },
+                    { id: 'b', text: "Juicio de amparo directo" },
+                    { id: 'c', text: "Reconsideración administrativa" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 28,
+                subject: 'amparo',
+                text: "El IMSS ha negado la prestación del servicio médico a una trabajadora embarazada con el argumento de que fue dada de baja por su patrón. Identifique la vía procedente para hacer exigible el derecho de la trabajadora a recibir atención médica.",
+                options: [
+                    { id: 'a', text: "Procedimiento ordinario" },
+                    { id: 'b', text: "Amparo indirecto" },
+                    { id: 'c', text: "Arbitraje" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 29,
+                subject: 'amparo',
+                text: "El tribunal que conoció una controversia laboral determinó por laudo remunerar económicamente al trabajador por no gozar de vacaciones en 3 años. ¿Cuál es la vía procedente para impugnar dicha determinación?",
+                options: [
+                    { id: 'a', text: "Amparo directo" },
+                    { id: 'b', text: "Amparo indirecto" },
+                    { id: 'c', text: "Reclamación" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 30,
+                subject: 'laboral',
+                text: "Una persona que tiene 16 años laborando en una empresa farmacéutica decidió dar por concluida su relación laboral por mutuo consentimiento. ¿Cuáles son dos de los principales derechos reclamables ante la terminación voluntaria?",
+                options: [
+                    { id: 'a', text: "Aguinaldo y prima de antigüedad" },
+                    { id: 'b', text: "Indemnización y reinstalación" },
+                    { id: 'c', text: "Salarios vencidos e intereses" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 31,
+                subject: 'amparo',
+                text: "Un trabajador al corriente con sus obligaciones acudió a un hospital del IMSS con un cuadro agravado que pone en peligro su vida. Los médicos le niegan el servicio sin causa justificada. Elija la vía para exigir el derecho humano relativo a la asistencia médica.",
+                options: [
+                    { id: 'a', text: "Ejecutiva" },
+                    { id: 'b', text: "Laboral" },
+                    { id: 'c', text: "Amparo indirecto" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 32,
+                subject: 'laboral',
+                text: "Una trabajadora considera que la jornada de 9 horas, de lunes a domingo, que desempeña para el patrón es inhumana por lo notoriamente excesiva, por lo que tramita un juicio laboral ante un tribunal. Debe realizar el trámite mediante la vía del procedimiento...",
+                options: [
+                    { id: 'a', text: "de seguridad social" },
+                    { id: 'b', text: "especial" },
+                    { id: 'c', text: "ordinario" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 33,
+                subject: 'civil',
+                text: "En un juicio sucesorio acaba de ser nombrada la albacea y se cita a otros dos posibles herederos. El proceso se encuentra en la etapa de...",
+                options: [
+                    { id: 'a', text: "sucesión" },
+                    { id: 'b', text: "administración" },
+                    { id: 'c', text: "partición" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 34,
+                subject: 'civil',
+                text: "Una persona rentó su casa y el arrendatario incumplió con los pagos los últimos dos meses. El arrendador insistió sin respuesta y decidió presentar demanda. ¿Cuál es la vía civil procedente para que realice el cobro del adeudo?",
+                options: [
+                    { id: 'a', text: "Ejecutiva" },
+                    { id: 'b', text: "Ordinaria" },
+                    { id: 'c', text: "Mecanismo Alternativo" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 35,
+                subject: 'mercantil',
+                text: "Sujeto A pide préstamo a Sujeto B. A no logra devolver el dinero y B demanda. B solicita al juez diligencia preparatoria consistente en reconocimiento de adeudo. ¿Qué vía ejercitó B?",
+                options: [
+                    { id: 'a', text: "Ejecutiva civil" },
+                    { id: 'b', text: "Ejecutiva mercantil" },
+                    { id: 'c', text: "Ordinaria civil" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 36,
+                subject: 'civil',
+                text: "En un juicio civil, el juez de Distrito ha dictado la sentencia definitiva en la que declara procedente la acción ejercida y condena a la parte demandada a la entrega del predio objeto de la litis. ¿Qué recurso procede en contra de esa sentencia si la demandada desea impugnarla?",
+                options: [
+                    { id: 'a', text: "Apelación" },
+                    { id: 'b', text: "Revisión" },
+                    { id: 'c', text: "Revocación" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 37,
+                subject: 'civil',
+                text: "En un juicio ordinario civil el notificador no encuentra a la persona en su domicilio, pero se la encuentra pocas calles después, entregándole el documento personalmente y firmando dos testigos. La notificación se considera...",
+                options: [
+                    { id: 'a', text: "nula" },
+                    { id: 'b', text: "válida" },
+                    { id: 'c', text: "inexistente" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 38,
+                subject: 'civil',
+                text: "Una mujer con dos hijos menores decide terminar su matrimonio por separación de bienes. Exhibe propuesta de convenio de divorcio. ¿Qué elemento debe excluirse de la propuesta de convenio?",
+                options: [
+                    { id: 'a', text: "Régimen de custodia" },
+                    { id: 'b', text: "Liquidación de la sociedad conyugal" },
+                    { id: 'c', text: "Obligación alimentista" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 39,
+                subject: 'civil',
+                text: "Un matrimonio bajo sociedad conyugal de 35 años (hijos de 27 y 30 años) demanda disolución. Identifique el elemento que debe contener el convenio presentado.",
+                options: [
+                    { id: 'a', text: "Designar custodia de los hijos" },
+                    { id: 'b', text: "Subvenir necesidades de los hijos" },
+                    { id: 'c', text: "Administrar bienes de sociedad conyugal y liquidarla" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 40,
+                subject: 'electoral',
+                text: "Una mujer se registró como precandidata a alcalde y su registro fue cancelado por el partido tras quejarse del proceso de selección. ¿Qué mecanismo debe promover para que su derecho sea respetado?",
+                options: [
+                    { id: 'a', text: "Juicio de revisión constitucional electoral" },
+                    { id: 'b', text: "Juicio para la protección de los derechos político-electorales" },
+                    { id: 'c', text: "Recurso de apelación" }
+                ],
+                correct: 'b'
+            },
+            
+            {
+                id: 41,
+                subject: 'civil',
+                text: "Un juzgador concede al perito de la parte actora el término de 3 días para aceptar el cargo. ¿En qué etapa se encuentra el caso?",
+                options: [
+                    { id: 'a', text: "Postulatoria" },
+                    { id: 'b', text: "Probatoria" },
+                    { id: 'c', text: "Preconclusiva" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 42,
+                subject: 'mercantil',
+                text: "En un juicio ejecutivo mercantil ($300,000.00) en desahogo de pruebas, se decretó de oficio caducidad de la instancia. ¿Cuál es el medio de impugnación procedente?",
                 options: [
                     { id: 'a', text: "Apelación" },
                     { id: 'b', text: "Revocación" },
@@ -316,9 +656,9 @@
                 correct: 'a'
             },
             {
-                id: 12,
+                id: 43,
                 subject: 'penal',
-                text: "Un funcionario público de una entidad federativa, con el apoyo de la fuerza pública, ha impedido la ejecución de un decreto que permite el comercio ambulante en el centro histórico de una ciudad durante todo el mes de septiembre. Identifique la conducta delictiva que corresponde.",
+                text: "Un funcionario público, con apoyo de la fuerza pública, ha impedido la ejecución de un decreto que permite el comercio ambulante en el centro histórico durante un mes. Identifique la conducta delictiva.",
                 options: [
                     { id: 'a', text: "Abuso de autoridad" },
                     { id: 'b', text: "Ejercicio ilícito de servicio público" },
@@ -327,20 +667,20 @@
                 correct: 'a'
             },
             {
-                id: 13,
+                id: 44,
                 subject: 'penal',
-                text: "En un procedimiento penal con el sistema penal acusatorio, una persona es señalada expresamente como responsable del delito de lesiones, cuya pena máxima no excede de 2 años de presión. El inculpado tiene derecho a ser juzgado en audiencia por un Tribunal de Enjuiciamiento antes de ____ salvo que solicite mayor plazo para su defensa.",
+                text: "En un procedimiento penal acusatorio, una persona es señalada responsable del delito de lesiones (pena máxima no excede 2 años). El inculpado tiene derecho a ser juzgado en audiencia por un Tribunal de Enjuiciamiento antes de...",
                 options: [
                     { id: 'a', text: "4 meses" },
                     { id: 'b', text: "6 meses" },
                     { id: 'c', text: "1 año" }
                 ],
-                correct: 'a'
+                correct: 'b'
             },
             {
-                id: 14,
+                id: 45,
                 subject: 'electoral',
-                text: "El día de la jornada electoral una persona se presentó en tiempo a la casilla que le correspondía, con su credencial para votar vigente, para emitir su voto en una elección federal; sin embargo, los funcionarios de la casilla se lo impidieron. El mecanismo constitucional para que la persona afectada individualmente reclame la violación descrita es el juicio...",
+                text: "El día de la jornada electoral una persona se presentó en su casilla con credencial vigente, pero los funcionarios le impidieron votar. El mecanismo constitucional individual para reclamar es el juicio...",
                 options: [
                     { id: 'a', text: "de inconformidad" },
                     { id: 'b', text: "de revisión constitucional electoral" },
@@ -349,9 +689,9 @@
                 correct: 'c'
             },
             {
-                id: 15,
+                id: 46,
                 subject: 'administrativo',
-                text: "La Secretaría de Educación Pública determinó mediante un procedimiento administrativo que una persona moral que cuenta con el reconocimiento de validez oficial de estudios incumplió con la normativa aplicable. El representante legal de la empresa considera que se debe controvertir el acto de autoridad por la vía correspondiente. ¿Qué recurso jurisdiccional es el procedente para buscar contravenir el acto de autoridad administrativa?",
+                text: "La SEP determinó que una persona moral con RVOE incumplió normativa. El representante legal considera controvertir el acto por la vía correspondiente. ¿Qué recurso jurisdiccional es el procedente?",
                 options: [
                     { id: 'a', text: "Juicio contencioso administrativo" },
                     { id: 'b', text: "Revisión" },
@@ -360,31 +700,31 @@
                 correct: 'a'
             },
             {
-                id: 16,
+                id: 47,
                 subject: 'penal',
-                text: "Una persona, aprovechando la relación de confianza que tenía con otra, la drogó y abusó sexualmente de ella, por lo que ésta última presentó una denuncia asistida por su defensor. El derecho que tiene como víctima es a...",
+                text: "Una persona drogó y abusó sexualmente de otra, quien denunció asistida por defensor. El derecho que tiene como víctima es a...",
                 options: [
                     { id: 'a', text: "que se le reciban los medios de prueba que ofrezca" },
                     { id: 'b', text: "no ser expuesta ante los medios de comunicación" },
-                    { id: 'c', text: "impugnar las omisiones del Ministerio Público como investigador" }
+                    { id: 'c', text: "impugnar las omisiones del MP como investigador" }
                 ],
                 correct: 'a'
             },
             {
-                id: 17,
+                id: 48,
                 subject: 'amparo',
-                text: "Con motivo de un proceso familiar en materia de alimentos, guarda y custodia y régimen de visitas y convivencias, se admitió el amparo indirecto interpuesto en representación de las niñas acreedoras alimentarias contra la...",
+                text: "Con motivo de un proceso familiar de alimentos y guarda/custodia, se admitió el amparo indirecto interpuesto en representación de las niñas acreedoras contra la...",
                 options: [
-                    { id: 'a', text: "sentencia del juzgado de lo familiar que establece un monto de alimentos inferior al equivalente a los gastos justificados por la actora" },
-                    { id: 'b', text: "resolución del tribunal de alzada que confirma una multa impuesta por no presentar a las niñas a una plática con la autoridad judicial" },
-                    { id: 'c', text: "decisión de la primera instancia de fijar la garantía del pago de alimentos exclusivamente mediante el sueldo de la parte acreedor" }
+                    { id: 'a', text: "sentencia del juzgado de lo familiar que establece un monto inferior a los gastos justificados" },
+                    { id: 'b', text: "resolución de alzada que confirma una multa por no presentar a las niñas" },
+                    { id: 'c', text: "decisión de fijar garantía de pago exclusivamente mediante sueldo" }
                 ],
                 correct: 'a'
             },
             {
-                id: 18,
+                id: 49,
                 subject: 'administrativo',
-                text: "La federación pretende vender un predio en subasta pública con la finalidad de obtener recursos para su operación. No obstante, un vecino de esa zona se opone, pues considera que a él le pertenece una fracción del terreno que se subastará. Asimismo, un sindicato no está de acuerdo, pues éste había firmado un convenio con la federación para que se le cediera en comodato parte del terreno, pues desea construir en él sus oficinas. Por último, se opone a la subasta una agrupación de colonos que habita desde hace décadas de forma irregular otra fracción del predio. ¿Cuál es el interés legítimo que se afectará con la subasta?",
+                text: "La federación pretende vender un predio en subasta pública. Se oponen un vecino (alega fracción es suya), un sindicato (comodato firmado) y colonos irregulares. ¿Cuál es el interés legítimo que se afectará?",
                 options: [
                     { id: 'a', text: "El de la agrupación de los colonos" },
                     { id: 'b', text: "El correspondiente al vecino" },
@@ -393,9 +733,9 @@
                 correct: 'a'
             },
             {
-                id: 19,
+                id: 50,
                 subject: 'penal',
-                text: "Una persona acusada del delito de sabotaje fue vinculada a proceso por el juez de control, quien ordenó también la prisión preventiva por tratarse de un delito grave. Al estar inconforme con la determinación, la persona la impugnará mediante una...",
+                text: "Una persona acusada de sabotaje fue vinculada a proceso (prisión preventiva por delito grave). Al estar inconforme con la determinación, la impugnará mediante una...",
                 options: [
                     { id: 'a', text: "queja" },
                     { id: 'b', text: "revocación" },
@@ -404,21 +744,1217 @@
                 correct: 'c'
             },
             {
-                id: 20,
+                id: 51,
                 subject: 'amparo',
-                text: "Un ciudadano tiene conocimiento de una investigación penal que existe en su contra y de una orden de aprehensión para llevarlo ante el juez de control, por lo que decide interponer un juicio de amparo indirecto en virtud de que es...",
+                text: "Un ciudadano tiene conocimiento de una investigación penal en su contra y de una orden de aprehensión, por lo que decide interponer un juicio de amparo indirecto en virtud de que es...",
                 options: [
                     { id: 'a', text: "un acto de imposible reparación emitido por la autoridad" },
                     { id: 'b', text: "una norma heteroaplicativa que vulnera derechos humanos" },
                     { id: 'c', text: "ilegal el emplazamiento realizado por el Ministerio Público" }
                 ],
                 correct: 'a'
+            },
+            {
+                id: 52,
+                subject: 'agrario',
+                text: "Una empresa se apropió de un pozo con agua que colinda parcialmente con un ejido. El representante no quiere acordar solución con la comunidad. Seleccione la acción que deberán seguir los ejidatarios.",
+                options: [
+                    { id: 'a', text: "Solicitar indemnización a la Comisión de Avalúos" },
+                    { id: 'b', text: "Realizar solicitud de restitución de bienes ante Tribunal Agrario" },
+                    { id: 'c', text: "Denunciar ante MP la apropiación de los bienes" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 53,
+                subject: 'administrativo',
+                text: "Un trabajador pensionado trasladó su domicilio al extranjero y dejó de percibir su seguro por cesantía (el IMSS suspendió pago). ¿Cuál es la vía de exigibilidad de este derecho humano a la seguridad social?",
+                options: [
+                    { id: 'a', text: "Demanda ante la Corte Interamericana" },
+                    { id: 'b', text: "Petición ante la Comisión Interamericana" },
+                    { id: 'c', text: "Queja ante la Comisión Nacional" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 54,
+                subject: 'agrario',
+                text: "Representantes de un núcleo ejidal demandan a comunidad vecina por error en delimitación de tierras. El tribunal agrario exhorta a llegar a una composición amigable. ¿A qué momento procesal corresponde?",
+                options: [
+                    { id: 'a', text: "Al emplazamiento" },
+                    { id: 'b', text: "Antes de citar a los testigos" },
+                    { id: 'c', text: "Durante la audiencia" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 55,
+                subject: 'agrario',
+                text: "Una persona ocupó terreno ejidal 15 años ininterrumpidos. Colindantes denunciaron ante Registro Agrario Nacional para garantizar restitución a herederos. Determine los derechos agrarios reclamables que la persona ocupante tiene.",
+                options: [
+                    { id: 'a', text: "De adquisición" },
+                    { id: 'b', text: "De suspensión" },
+                    { id: 'c', text: "De pérdida" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 56,
+                subject: 'laboral',
+                text: "Empresa contrató a mujer cajera por 6 meses; termina relación. Le pagan proporcionales de aguinaldo, vacaciones y salarios pendientes. ¿A qué tiene derecho con motivo de la terminación?",
+                options: [
+                    { id: 'a', text: "Finiquito" },
+                    { id: 'b', text: "Liquidación" },
+                    { id: 'c', text: "Salarios caídos" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 57,
+                subject: 'laboral',
+                text: "Universidad pública tiene dificultades para pagar prestaciones a sindicato docente. El sindicato suspende labores. Determine la procedencia del ejercicio de derecho de huelga.",
+                options: [
+                    { id: 'a', text: "Demostrar incosteabilidad temporal y manifiesta" },
+                    { id: 'b', text: "Exigir el cumplimiento del contrato colectivo violado" },
+                    { id: 'c', text: "Probar la falta de fondos" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 58,
+                subject: 'laboral',
+                text: "Persona que trabajó 20 años decide retiro voluntario y no le incluyen la prima de antigüedad. Decide demandar. A partir de su separación, el trabajador tiene ________ para reclamar el pago.",
+                options: [
+                    { id: 'a', text: "dos meses" },
+                    { id: 'b', text: "un año" },
+                    { id: 'c', text: "dos años" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 59,
+                subject: 'laboral',
+                text: "Patrón rescindió contrato por cierre tras 10 años de labor del trabajador. El empleado demanda indemnización y primas. Sin conciliación, en el juicio se le otorga al actor posibilidad de modificar su demanda. ¿Qué etapa es?",
+                options: [
+                    { id: 'a', text: "Demanda y excepciones (Réplica)" },
+                    { id: 'b', text: "Reconvención" },
+                    { id: 'c', text: "Allanamiento" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 60,
+                subject: 'administrativo',
+                text: "Trabajador del ISSSTE solicita pensión por invalidez, pero el instituto se la niega argumentando que no se actualizó la hipótesis. La vía de exigibilidad que debe aplicar es el recurso de...",
+                options: [
+                    { id: 'a', text: "reconsideración" },
+                    { id: 'b', text: "inconformidad" },
+                    { id: 'c', text: "queja" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 61,
+                subject: 'laboral',
+                text: "Un trabajador demandó por violaciones a sus derechos laborales individuales al patrón. Las prestaciones señaladas por el trabajador en su escrito inicial no exceden del importe de 3 meses de salarios, por lo que procede la vía...",
+                options: [
+                    { id: 'a', text: "especial" },
+                    { id: 'b', text: "sumaria" },
+                    { id: 'c', text: "ordinaria" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 62,
+                subject: 'civil',
+                text: "En un juicio sucesorio intestamentario se ha determinado, mediante sentencia por parte del juez, la partición de la herencia y se ha adjudicado a cada heredero los bienes. Uno de los herederos no está de acuerdo, por lo que promoverá el medio de impugnación de...",
+                options: [
+                    { id: 'a', text: "apelación" },
+                    { id: 'b', text: "amparo indirecto" },
+                    { id: 'c', text: "queja" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 63,
+                subject: 'civil',
+                text: "A una persona que es parte de un juicio intestamentario le ha sido notificado que en breve iniciará la etapa de ________ ya que la cuenta de administración concluyó sin problemas.",
+                options: [
+                    { id: 'a', text: "nombrar albacea" },
+                    { id: 'b', text: "partición" },
+                    { id: 'c', text: "avalúo" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 64,
+                subject: 'mercantil',
+                text: "El endosatario en propiedad de un cheque librado hace una semana no ha recibido su pago porque la cuenta fue cancelada. Desea demandar su pago por la vía ejecutiva mercantil. ¿Qué tiene que hacer el endosatario para que proceda su acción?",
+                options: [
+                    { id: 'a', text: "Requerir de pago al librador" },
+                    { id: 'b', text: "Protestar el cheque con el librado" },
+                    { id: 'c', text: "Interpelar judicialmente al endosante" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 65,
+                subject: 'civil',
+                text: "Unos hermanos deciden repartir de manera equitativa dos propiedades de sus padres fallecidos (sin testamento). Una propiedad fue heredada por el padrino en favor del padre. La otra la adquirió la madre de sus abuelos. Identifique la vía procesal correspondiente.",
+                options: [
+                    { id: 'a', text: "Herencia legítima" },
+                    { id: 'b', text: "Donación" },
+                    { id: 'c', text: "Testamentaria" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 66,
+                subject: 'civil',
+                text: "El representante legal de una empresa de construcción fue emplazado a juicio en la primera visita a sus oficinas, por medio de un empleado. Le entregó la cédula sin hechos ni motivos, pero derivó de daños a un bien del gobierno federal. La notificación es...",
+                options: [
+                    { id: 'a', text: "válida porque fue realizada en su domicilio" },
+                    { id: 'b', text: "nula, debido a que debió haberse dejado citatorio para hora fija" },
+                    { id: 'c', text: "inexistente porque debió realizarse desde la primera visita" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 67,
+                subject: 'civil',
+                text: "Un testador ha hecho un testamento repartiendo bienes entre sus tres hijos. A su muerte, los herederos se percatan de que no dispuso nada respecto a una finca rústica. Para heredar la finca deberán...",
+                options: [
+                    { id: 'a', text: "demandar la sucesión legitima respecto al bien no dispuesto" },
+                    { id: 'b', text: "solicitar al juez que incorpore la finca a la masa hereditaria" },
+                    { id: 'c', text: "pedir la nulidad del testamento por no haberse dispuesto de todo" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 68,
+                subject: 'mercantil',
+                text: "Una persona suscribió un pagaré por $100,000; al no recibir pago, el acreedor demandó por la vía ejecutiva mercantil. El juez procedió a procurar la conciliación y llegaron a un convenio. Seleccione la etapa procesal.",
+                options: [
+                    { id: 'a', text: "Audiencia preliminar" },
+                    { id: 'b', text: "Fijación de la litis" },
+                    { id: 'c', text: "Audiencia del juicio" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 69,
+                subject: 'civil',
+                text: "Una persona arrienda un inmueble al gobierno federal; éste incumplió el contrato por rentas vencidas. El arrendador y notario requirieron el pago, el deudor aceptó la deuda en fe de hechos. ¿Cuál es la vía procedente para reclamar el pago?",
+                options: [
+                    { id: 'a', text: "Ejecutiva mercantil" },
+                    { id: 'b', text: "Ejecutiva civil" },
+                    { id: 'c', text: "Oral mercantil" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 70,
+                subject: 'mercantil',
+                text: "Se inició el procedimiento ejecutivo mercantil y el actuario acudió a realizar el emplazamiento en el domicilio del demandado, para que éste dé contestación, ofrezca pruebas y prepare alegatos. ¿En qué etapa se encuentra el procedimiento?",
+                options: [
+                    { id: 'a', text: "Postulatoria" },
+                    { id: 'b', text: "Probatoria" },
+                    { id: 'c', text: "Alegatos" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 71,
+                subject: 'mercantil',
+                text: "En procedimiento mercantil basado en título ejecutivo, se embargaron bienes al deudor. El demandado contestó oponiendo la excepción procesal de la ______ puesto que el juez conoce ya de un juicio igual.",
+                options: [
+                    { id: 'a', text: "conexidad de la causa" },
+                    { id: 'b', text: "falta de personalidad del actor" },
+                    { id: 'c', text: "litispendencia" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 72,
+                subject: 'mercantil',
+                text: "En un juicio ordinario mercantil se decreta una providencia precautoria reteniendo el automóvil del demandado. El demandado promoverá el recurso de ______ ya que está en desacuerdo.",
+                options: [
+                    { id: 'a', text: "apelación" },
+                    { id: 'b', text: "revocación" },
+                    { id: 'c', text: "aclaración" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 73,
+                subject: 'civil',
+                text: "Una pareja interpuso demanda de divorcio voluntario judicial; ha pasado más de 1 año y no han acudido a ejercer ninguna acción procesal, a pesar de las notificaciones. Distinga el efecto jurídico procesal aplicable.",
+                options: [
+                    { id: 'a', text: "Prescripción" },
+                    { id: 'b', text: "Caducidad" },
+                    { id: 'c', text: "Preclusión" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 74,
+                subject: 'mercantil',
+                text: "Ante emergencia sanitaria, una cadena de farmacias demanda a una empresa de internet (juicio ordinario mercantil). ¿Cuál es el término, en días, que la empresa tiene para contestar la demanda?",
+                options: [
+                    { id: 'a', text: "3" },
+                    { id: 'b', text: "5" },
+                    { id: 'c', text: "9" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 75,
+                subject: 'civil',
+                text: "Dos hermanos (uno menor) heredan un inmueble. Su madre decide venderlo sin avisarles. El hijo mayor decide iniciar una acción que restituya la herencia. ¿Quién tiene la legitimidad para iniciar esta acción?",
+                options: [
+                    { id: 'a', text: "El hijo mayor" },
+                    { id: 'b', text: "El abuelo" },
+                    { id: 'c', text: "El juez" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 76,
+                subject: 'civil',
+                text: "Una pareja bajo separación de bienes (hijo de 18 años) se divorcia. La mujer se va a otra entidad. Al iniciar el divorcio, ¿qué debe señalar el convenio?",
+                options: [
+                    { id: 'a', text: "Pagar los alimentos del cónyuge" },
+                    { id: 'b', text: "Subvenir a las necesidades del hijo si lo requiere" },
+                    { id: 'c', text: "Realizar el inventario de bienes" }
+                ],
+                correct: 'a' // Suponiendo compensación o alimentos entre cónyuges.
+            },
+            {
+                id: 77,
+                subject: 'civil',
+                text: "Una pareja con 5 años de matrimonio y dos hijos menores decide dar por terminada su relación por mutuo consentimiento. ¿En qué vía tramitan el divorcio?",
+                options: [
+                    { id: 'a', text: "administrativa" },
+                    { id: 'b', text: "judicial" },
+                    { id: 'c', text: "notarial" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 78,
+                subject: 'mercantil',
+                text: "Individuo suscribió un pagaré por $50,000 con 10% de interés. Después de cuatro meses, ha sido omiso. ¿Qué tipo de juicio es aplicable?",
+                options: [
+                    { id: 'a', text: "Ejecutivo" },
+                    { id: 'b', text: "Ordinario" },
+                    { id: 'c', text: "Especial" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 79,
+                subject: 'civil',
+                text: "El cónyuge supérstite (con usufructo vitalicio sin plazo) es demandado por el hijo para desocupar la finca. El juez ordena entregarla. Esta decisión es recurrible porque el...",
+                options: [
+                    { id: 'a', text: "plazo para cambiar su domicilio debería correr a partir de la sentencia" },
+                    { id: 'b', text: "actor no garantizó al demandado el previo ejercicio del derecho del tanto" },
+                    { id: 'c', text: "usufructo es vitalicio e incluye el derecho de percibir los frutos" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 80,
+                subject: 'mercantil',
+                text: "En un procedimiento mercantil de cuantía indeterminada, un litigante fue condenado en sentencia y cree haber sido agraviado. ¿Cuál es el medio de impugnación procedente?",
+                options: [
+                    { id: 'a', text: "Aclaración" },
+                    { id: 'b', text: "Apelación" },
+                    { id: 'c', text: "Revocación" }
+                ],
+                correct: 'b'
+            },
+
+            {
+                id: 81,
+                subject: 'electoral',
+                text: "La autoridad electoral federal resolvió una controversia en favor de un partido, donde una ciudadana fue afiliada sin su consentimiento. Ella desea impugnar la determinación emitida. Identifique el mecanismo constitucional procedente.",
+                options: [
+                    { id: 'a', text: "Juicio para la protección de los derechos político-electorales" },
+                    { id: 'b', text: "Juicio de revisión constitucional federal" },
+                    { id: 'c', text: "Recurso de reconsideración electoral federal" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 82,
+                subject: 'administrativo',
+                text: "Un servidor público presentó un recurso de apelación en contra de una resolución definitiva que determinó su responsabilidad administrativa con sanción de suspensión de sueldo por 90 días. Un requisito de procedencia es...",
+                options: [
+                    { id: 'a', text: "Faltas administrativas no graves" },
+                    { id: 'b', text: "Desecho de alguna prueba" },
+                    { id: 'c', text: "Faltas administrativas graves" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 83,
+                subject: 'fiscal',
+                text: "Una persona acude al banco y no puede retirar porque el SAT inmovilizó su cuenta por crédito fiscal. La acción que procede contra ese acto sancionador es el recurso de...",
+                options: [
+                    { id: 'a', text: "revisión" },
+                    { id: 'b', text: "revocación" },
+                    { id: 'c', text: "inconformidad" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 84,
+                subject: 'administrativo',
+                text: "Un ciudadano interpone un recurso de reclamación ante una sala del Tribunal Federal de Justicia Administrativa. El requisito de procedencia es que...",
+                options: [
+                    { id: 'a', text: "la sala regional negó petición de sobreseimiento" },
+                    { id: 'b', text: "el magistrado instructor emitió resolución que desecha la demanda" },
+                    { id: 'c', text: "le fue notificada resolución fuera del plazo" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 85,
+                subject: 'amparo',
+                text: "En un procedimiento ejecutivo mercantil (cuantía 1,000,000) se condena al demandado. Durante el juicio se desechó ilegalmente una prueba ofrecida por el demandado y resultó infructuosa la regularización. ¿Contra qué acto procede el amparo directo?",
+                options: [
+                    { id: 'a', text: "Pago de gastos y costas" },
+                    { id: 'b', text: "Pago de intereses" },
+                    { id: 'c', text: "La sentencia definitiva (reclamando el desechamiento de prueba)" } // Inferida como C o Amparo Directo
+                ],
+                correct: 'c'
+            },
+            {
+                id: 86,
+                subject: 'fiscal',
+                text: "Un contribuyente se encuentra inconforme, ya que la autoridad fiscal le ha negado la devolución de una cantidad por pago de impuestos. Para impugnar interpondrá el recurso de...",
+                options: [
+                    { id: 'a', text: "inconformidad" },
+                    { id: 'b', text: "nulidad" },
+                    { id: 'c', text: "revocación" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 87,
+                subject: 'amparo',
+                text: "Tres acusados interpusieron amparo por violaciones a sus garantías durante el proceso penal. A uno le ratificaron medidas cautelares (amparo indirecto). A dos les confirmaron sentencia condenatoria (amparo directo). Identifique los plazos respectivos.",
+                options: [
+                    { id: 'a', text: "10 días y 30 días" },
+                    { id: 'b', text: "15 días y, cuando se imponga pena de prisión, hasta 8 años" },
+                    { id: 'c', text: "20 días y en cualquier tiempo" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 88,
+                subject: 'amparo',
+                text: "Una persona promovió amparo indirecto como tercero extraño por equiparación, por un procedimiento en forma de juicio donde se afectan sus bienes, sin estar emplazado. El acto contra el cual procede es la...",
+                options: [
+                    { id: 'a', text: "falta de oportunidad para defenderse" },
+                    { id: 'b', text: "imposibilidad de protección" },
+                    { id: 'c', text: "falta de citación legal a juicio para ejercitar su defensa" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 89,
+                subject: 'administrativo',
+                text: "Derivado de falta de atención y omisión de medicamentos, un derechohabiente del IMSS solicitó por queja el reembolso de gastos en clínica privada. El IMSS declaró improcedente. ¿Qué medio debe promover?",
+                options: [
+                    { id: 'a', text: "Aclaración administrativa" },
+                    { id: 'b', text: "Revocación" },
+                    { id: 'c', text: "Inconformidad" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 90,
+                subject: 'amparo',
+                text: "El congreso de una entidad federativa emite una ley que fija las condiciones de la moneda nacional; la Cámara de Diputados interpone acción de inconstitucionalidad. Para que proceda es necesario que...",
+                options: [
+                    { id: 'a', text: "se señale el medio oficial en el que se publicó" },
+                    { id: 'b', text: "se mencionen los fundamentos jurídicos" },
+                    { id: 'c', text: "hayan cesado los efectos del acto" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 91,
+                subject: 'penal',
+                text: "En una fiesta, un invitado toca los genitales por encima de la ropa a una niña de 3 años dormida. ¿Qué conducta delictiva comete?",
+                options: [
+                    { id: 'a', text: "Violación equiparada" },
+                    { id: 'b', text: "Abuso sexual agravado" },
+                    { id: 'c', text: "Estupro" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 92,
+                subject: 'amparo',
+                text: "Dos imputados por abuso de confianza presentan juicio de amparo porque el MP negó solicitud de procedimiento abreviado. El juez determina causal de improcedencia porque...",
+                options: [
+                    { id: 'a', text: "cesaron los efectos del acto reclamado" },
+                    { id: 'b', text: "resulta imposible corroborar imputación" },
+                    { id: 'c', text: "se reclama un acto que no proviene de una autoridad jurisdiccional, o es potestad exclusiva del MP" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 93,
+                subject: 'penal',
+                text: "Un ofendido por robo se encuentra en el hospital y le es imposible trasladarse para el interrogatorio. ¿A qué tiene derecho la víctima?",
+                options: [
+                    { id: 'a', text: "Presentar declaración por escrito" },
+                    { id: 'b', text: "Recibir protección" },
+                    { id: 'c', text: "Solicitar el traslado de la autoridad al lugar donde se encuentre" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 94,
+                subject: 'penal',
+                text: "En proceso penal, se vincula a proceso a extranjero que no habla español y que manifiesta no querer nombrar abogado. Indique el derecho que le asiste.",
+                options: [
+                    { id: 'a', text: "Que se informe a su embajada" },
+                    { id: 'b', text: "Ser asistido por un traductor" },
+                    { id: 'c', text: "Contar con una defensa a cargo de un asesor jurídico (Defensor público)" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 95,
+                subject: 'fiscal',
+                text: "Una persona ve que su inmueble fue rematado por el SAT y quiere tramitar juicio de revocación. ¿Cuál es el plazo procesal (en días) según el Código Fiscal?",
+                options: [
+                    { id: 'a', text: "10" },
+                    { id: 'b', text: "15" },
+                    { id: 'c', text: "30" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 96,
+                subject: 'penal',
+                text: "Durante audiencia inicial, el juez de control decretó vinculación a proceso por violencia familiar. ¿Qué medio de impugnación debe hacer valer el imputado?",
+                options: [
+                    { id: 'a', text: "Revocación" },
+                    { id: 'b', text: "Apelación" },
+                    { id: 'c', text: "Queja" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 97,
+                subject: 'amparo',
+                text: "En una controversia familiar (alimentos, visitas), la actora ha presentado amparos. ¿Contra qué acto interpuso la demanda de amparo directo?",
+                options: [
+                    { id: 'a', text: "La decisión del Tribunal de Alzada que modifica la sentencia de primera instancia" },
+                    { id: 'b', text: "La resolución recaída a apelación por multa" },
+                    { id: 'c', text: "La sentencia definitiva del juzgado de primera instancia" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 98,
+                subject: 'amparo',
+                text: "Un sentenciado por lesiones culposas en apelación le confirman la condena. Promueve amparo directo. ¿Cuál es el plazo que tiene?",
+                options: [
+                    { id: 'a', text: "En cualquier momento" },
+                    { id: 'b', text: "Hasta 8 años" },
+                    { id: 'c', text: "15 días" } // Basado en la regla general
+                ],
+                correct: 'b'
+            },
+            {
+                id: 99,
+                subject: 'amparo',
+                text: "Una persona promueve amparo indirecto contra orden de aprehensión. El juez de distrito la desecha de plano por causa manifiesta. ¿Qué recurso procede?",
+                options: [
+                    { id: 'a', text: "Revisión" },
+                    { id: 'b', text: "Queja" },
+                    { id: 'c', text: "Reclamación" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 100,
+                subject: 'amparo',
+                text: "Tras la reforma al Código Penal Federal, el fiscal general solicita invalidez de la norma por vulnerar el art. 16. Ante ello, se debe ejercitar...",
+                options: [
+                    { id: 'a', text: "la controversia constitucional" },
+                    { id: 'b', text: "la acción de inconstitucionalidad" },
+                    { id: 'c', text: "el recurso de apelación" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 101,
+                subject: 'amparo',
+                text: "En controversia constitucional de la Federación contra una entidad, el ministro instructor resolvió desechar pruebas. Identifique la acción por ejercitar.",
+                options: [
+                    { id: 'a', text: "Reclamación" },
+                    { id: 'b', text: "Revisión" },
+                    { id: 'c', text: "Queja" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 102,
+                subject: 'agrario',
+                text: "Un octogenario con parcela de 40 años quiere heredarla a su hijo de 42 años sembrador. Acto a realizar ante el RAN:",
+                options: [
+                    { id: 'a', text: "Rectificación de asiento" },
+                    { id: 'b', text: "Lista de sucesión" },
+                    { id: 'c', text: "Calificación registral" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 103,
+                subject: 'mercantil',
+                text: "Inversores registran su Sociedad Anónima en el Registro Público de Comercio. El derecho que salvaguarda la sociedad con este registro es la...",
+                options: [
+                    { id: 'a', text: "capacidad de emitir acciones" },
+                    { id: 'b', text: "facultad de responder a terceros" },
+                    { id: 'c', text: "personalidad jurídica frente a terceros" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 104,
+                subject: 'civil',
+                text: "Comprador de departamento llega y encuentra a alguien con contrato privado sin registrar. ¿Cuál es el efecto de la omisión de inscripción del primer contrato?",
+                options: [
+                    { id: 'a', text: "El segundo adquiriente conserva el inmueble (por registrarlo)" },
+                    { id: 'b', text: "Segundo adquiriente deberá pagar al primero" },
+                    { id: 'c', text: "El primer comprador conserva el inmueble" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 105,
+                subject: 'civil',
+                text: "Persona verifica en el RPP que el vendedor es el dueño antes de comprar. ¿Qué derecho se protege con la verificación registral?",
+                options: [
+                    { id: 'a', text: "Propiedad" },
+                    { id: 'b', text: "Certeza Jurídica / Oponibilidad" },
+                    { id: 'c', text: "Prescripción" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 106,
+                subject: 'civil',
+                text: "Un notario público puede _____ la escritura cuando se le haya justificado que se ha cumplido con todos los requisitos legales para ello.",
+                options: [
+                    { id: 'a', text: "archivar" },
+                    { id: 'b', text: "rescindir" },
+                    { id: 'c', text: "autorizar" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 107,
+                subject: 'mercantil',
+                text: "En audiencia en Profeco, acude representante de tienda y representante de consumidor, ambos solo con carta poder simple y copias de INE. ¿Cuál es la consecuencia?",
+                options: [
+                    { id: 'a', text: "Deberán acudir posteriormente a ratificar" },
+                    { id: 'b', text: "Se tendrá a la proveedora como no presentada" },
+                    { id: 'c', text: "Se celebrará la audiencia válidamente" }
+                ],
+                correct: 'c' // En Profeco se admiten cartas poder simples para estos montos.
+            },
+            {
+                id: 108,
+                subject: 'administrativo',
+                text: "Empresa quiere usar diseño indígena en su catálogo. La Ley Federal de Derecho de Autor establece que deben...",
+                options: [
+                    { id: 'a', text: "consultar a la Secretaría de Cultura" },
+                    { id: 'b', text: "solicitar al INDAUTOR" },
+                    { id: 'c', text: "solicitar permiso directamente a la comunidad" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 109,
+                subject: 'civil',
+                text: "Pareja con 5 años casados, sin hijos, bienes separados, deciden de mutuo acuerdo divorciarse. Acuden al juez del Registro Civil para...",
+                options: [
+                    { id: 'a', text: "divorcio administrativo" },
+                    { id: 'b', text: "divorcio judicial" },
+                    { id: 'c', text: "rectificación de acta" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 110,
+                subject: 'derechos_humanos',
+                text: "Asociación LGBTI queja en CNDH porque Registro Civil niega matrimonio a personas del mismo sexo. El derecho humano violentado es...",
+                options: [
+                    { id: 'a', text: "Individual" },
+                    { id: 'b', text: "Simple" },
+                    { id: 'c', text: "Colectivo o Igualdad y no discriminación" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 111,
+                subject: 'administrativo',
+                text: "Queja en Condusef a los 24 meses por cheque cobrado indebidamente. ¿La queja es procedente?",
+                options: [
+                    { id: 'a', text: "Sí, se tramitó dentro de los 36 meses" },
+                    { id: 'b', text: "No, por falta de acción previa" },
+                    { id: 'c', text: "No, por exceder cuantía" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 112,
+                subject: 'derechos_humanos',
+                text: "CNDH emite recomendación a SEDENA por tortura, y ésta no la cumple ni acepta. Mecanismo aplicable:",
+                options: [
+                    { id: 'a', text: "La autoridad debe fundar su negativa y comparecer ante el Senado" },
+                    { id: 'b', text: "Autoridad interpondrá inconformidad" },
+                    { id: 'c', text: "Visitador solicitará medidas precautorias" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 113,
+                subject: 'derechos_humanos',
+                text: "En juicio familiar, juez carece de peritos en psiquiatría con perspectiva de género. ¿Alcance en la violación a derechos humanos?",
+                options: [
+                    { id: 'a', text: "Enfoque de género" },
+                    { id: 'b', text: "Diversidad etaria" },
+                    { id: 'c', text: "Transversalidad y debido proceso" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 114,
+                subject: 'amparo',
+                text: "Asociación civil demanda a empresa por daño ambiental, pero desechan demanda. ¿Qué derecho se viola?",
+                options: [
+                    { id: 'a', text: "Derecho a la tierra" },
+                    { id: 'b', text: "Derecho a un medio ambiente sano" },
+                    { id: 'c', text: "Derecho al acceso a la justicia" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 115,
+                subject: 'derechos_humanos',
+                text: "IMSS aceptó recomendación de CNDH por negar servicio a esposa (matrimonio igualitario). Acción de reparación:",
+                options: [
+                    { id: 'a', text: "Capacitar al personal en derechos humanos y no discriminación" },
+                    { id: 'b', text: "Admitir como conviviente" },
+                    { id: 'c', text: "Hacer públicos lineamientos" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 116,
+                subject: 'penal',
+                text: "Juez aprueba acuerdo reparatorio diferido por daño en propiedad. Una vez cumplido tendrá el efecto de...",
+                options: [
+                    { id: 'a', text: "sobreseer el procedimiento" },
+                    { id: 'b', text: "extinguir la acción penal" },
+                    { id: 'c', text: "corroborar plan" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 117,
+                subject: 'penal',
+                text: "En investigación inicial, el asesor jurídico solicita acuerdo reparatorio platicado con imputado. Requisito de procedencia:",
+                options: [
+                    { id: 'a', text: "Aprobación por el MP o Juez" },
+                    { id: 'b', text: "Que lo solicite la víctima" },
+                    { id: 'c', text: "Que sea delito culposo" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 118,
+                subject: 'penal',
+                text: "Imputado por allanamiento de morada solicita suspensión del proceso 30 días para acordar reparación. ¿Plazo límite para solicitarlo?",
+                options: [
+                    { id: 'a', text: "Después de que el juez dicte apertura" },
+                    { id: 'b', text: "Cuando se señalen acusaciones" },
+                    { id: 'c', text: "Antes de que se decrete auto de apertura a juicio" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 119,
+                subject: 'penal',
+                text: "Médico reconoce mala praxis. Posibilidad jurídica que permite a la víctima no llevar a cabo juicio:",
+                options: [
+                    { id: 'a', text: "Un acuerdo reparatorio" },
+                    { id: 'b', text: "Un procedimiento abreviado" },
+                    { id: 'c', text: "Una suspensión condicional" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 120,
+                subject: 'penal',
+                text: "Accidente de auto, conductor no quiere pagar daños materiales. Víctima procede penalmente. ¿Cuál es el momento procesal para lograr acuerdo reparatorio?",
+                options: [
+                    { id: 'a', text: "Desde presentación de denuncia hasta antes de apertura a juicio" },
+                    { id: 'b', text: "Que MP haga planteamiento" },
+                    { id: 'c', text: "En cualquier momento por el MP" }
+                ],
+                correct: 'a'
+            },
+
+            {
+                id: 121,
+                subject: 'penal',
+                text: "Persona roba tienda, llega autoridad, dueño e imputado llegan a arreglo con suspensión condicional. Si imputado incumple...",
+                options: [
+                    { id: 'a', text: "Imponer que resida en un lugar" },
+                    { id: 'b', text: "Reanudar el proceso penal (Revocación)" },
+                    { id: 'c', text: "Abstención de viajar" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 122,
+                subject: 'penal',
+                text: "Imputado por amenazas elabora plan de reparación. Momento oportuno para solicitar solución alterna será...",
+                options: [
+                    { id: 'a', text: "después de auto de vinculación y antes de apertura a juicio oral" },
+                    { id: 'b', text: "después de vinculación, en cualquier momento" },
+                    { id: 'c', text: "desde la querella" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 123,
+                subject: 'laboral',
+                text: "Trabajadores de hospital se enteran por WhatsApp que su contrato termina. Mecanismo antes de demandar en Centro Federal:",
+                options: [
+                    { id: 'a', text: "una mediación" },
+                    { id: 'b', text: "un arbitraje" },
+                    { id: 'c', text: "una conciliación" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 124,
+                subject: 'laboral',
+                text: "Sindicato en empresa textil quiere expulsar a un miembro por mal comportamiento. Para expulsarlo, el líder debe...",
+                options: [
+                    { id: 'a', text: "citar al trabajador y decidir" },
+                    { id: 'b', text: "convocar a la asamblea de trabajadores (debido proceso)" },
+                    { id: 'c', text: "comunicar formalmente" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 125,
+                subject: 'civil',
+                text: "En la Ciudad de México, el hijo mayor es tutor de persona interdicta y no rinde cuentas en más de 3 meses. El hijo menor pide remoción judicial. Obligación incumplida:",
+                options: [
+                    { id: 'a', text: "venta de bienes" },
+                    { id: 'b', text: "lo que causa daño" },
+                    { id: 'c', text: "Rendir cuentas de la administración (en enero)" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 126,
+                subject: 'laboral',
+                text: "Trabajador en farmacéutica inconforme porque no le dieron ascenso siendo el más antiguo. Alternativa procedente para acuerdo:",
+                options: [
+                    { id: 'a', text: "demandar en tribunal" },
+                    { id: 'b', text: "solicitar conciliación prejudicial" },
+                    { id: 'c', text: "acudir a PROFEDET" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 127,
+                subject: 'civil',
+                text: "Dos personas viven juntas por 6 años (concubinato) y quieren acreditar su unión de forma no jurisdiccional en CDMX. Órgano:",
+                options: [
+                    { id: 'a', text: "Registro Civil" },
+                    { id: 'b', text: "Embajada" },
+                    { id: 'c', text: "Secretaría de Bienestar" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 128,
+                subject: 'civil',
+                text: "Padre fallece intestado, hijas quieren abrir sucesión vía notarial. Requisito indispensable:",
+                options: [
+                    { id: 'a', text: "no haya controversia entre las herederas (y sean mayores)" },
+                    { id: 'b', text: "certifique no bienes" },
+                    { id: 'c', text: "exista testamento" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 129,
+                subject: 'civil',
+                text: "Matrimonio por sociedad conyugal desea cambiar a separación de bienes. Vía no jurisdiccional:",
+                options: [
+                    { id: 'a', text: "Juzgado familiar" },
+                    { id: 'b', text: "Registro Civil" },
+                    { id: 'c', text: "Notario público" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 130,
+                subject: 'civil',
+                text: "Pareja sin hijos, casados hace 5 años, deciden divorciarse administrativamente. Supuesto a cubrir:",
+                options: [
+                    { id: 'a', text: "Propuesta de convenio" },
+                    { id: 'b', text: "Liquidar sociedad conyugal" },
+                    { id: 'c', text: "Mutuo consentimiento y ser mayores sin hijos que requieran alimentos" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 131,
+                subject: 'civil',
+                text: "Persona en el extranjero otorga poder especial privado con dos testigos para trámite urgente en Registro Civil. ¿Qué acto puede realizar?",
+                options: [
+                    { id: 'a', text: "Matrimonio" },
+                    { id: 'b', text: "Reconocimiento de hijos" },
+                    { id: 'c', text: "Adopción" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 132,
+                subject: 'mercantil',
+                text: "Empleados crean pieza complementaria para aspiradora. Acuden al IMPI para obtener...",
+                options: [
+                    { id: 'a', text: "una patente" },
+                    { id: 'b', text: "un registro de modelo de utilidad" },
+                    { id: 'c', text: "un certificado" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 133,
+                subject: 'mercantil',
+                text: "Jóvenes emprendedores quieren constituir Sociedad Anónima. Para tener certeza jurídica, deben...",
+                options: [
+                    { id: 'a', text: "pasar ante notario o corredor público" },
+                    { id: 'b', text: "ser aprobados por SHCP" },
+                    { id: 'c', text: "tener 80% capital mexicano" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 134,
+                subject: 'civil',
+                text: "Persona acude al notario para otorgar poder general irrevocable. El notario deberá...",
+                options: [
+                    { id: 'a', text: "darle publicidad" },
+                    { id: 'b', text: "dar aviso al Archivo de Notarías / Registro de Poderes" },
+                    { id: 'c', text: "remitirlo al judicial" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 135,
+                subject: 'derechos_humanos',
+                text: "Convocatoria exige no tener más de 15 años de cédula. Persona de 65 años se queja en CONAPRED. Facultad del Consejo:",
+                options: [
+                    { id: 'a', text: "Indagatorias penales" },
+                    { id: 'b', text: "Proteger contra discriminación (Dictar resoluciones por disposición)" },
+                    { id: 'c', text: "Salvaguardar integridad" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 136,
+                subject: 'derechos_humanos',
+                text: "Policía niega recomendación de CNDH, Senado lo cita y considera insuficiente motivo. CNDH puede...",
+                options: [
+                    { id: 'a', text: "hacer saber al superior" },
+                    { id: 'b', text: "informar a persistencia" },
+                    { id: 'c', text: "Denunciar al servidor público ante el Ministerio Público" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 137,
+                subject: 'administrativo',
+                text: "Tarjetahabiente no reconoce compra. Banco no le devuelve dinero en tiempo legal. Queja procede ante...",
+                options: [
+                    { id: 'a', text: "CONDUSEF" },
+                    { id: 'b', text: "CNBV" },
+                    { id: 'c', text: "Banco de México" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 138,
+                subject: 'penal',
+                text: "Víctima de estupro se opone a suspensión condicional porque el imputado no reconoce los hechos en el plan de reparación (quiere conocer verdad). El juez...",
+                options: [
+                    { id: 'a', text: "Dispondrá evaluación previa" },
+                    { id: 'b', text: "No tendrá por vinculante la oposición (reconocimiento no es requisito de SC)" },
+                    { id: 'c', text: "Tendrá por vinculante la oposición" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 139,
+                subject: 'penal',
+                text: "Imputado con SC no debe manejar, pero lo hace por parto prematuro de esposa. Juez revoca SC. Medio de impugnación:",
+                options: [
+                    { id: 'a', text: "Revocación" },
+                    { id: 'b', text: "Apelación (Procede contra resolución que revoca SC)" },
+                    { id: 'c', text: "Queja" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 140,
+                subject: 'penal',
+                text: "Reparador de celulares extorsiona por fotos íntimas. Pide terminación anticipada (Procedimiento abreviado). Procede cuando...",
+                options: [
+                    { id: 'a', text: "juez reciba pruebas" },
+                    { id: 'b', text: "MP lo solicite" },
+                    { id: 'c', text: "El imputado admita responsabilidad y MP lo solicite antes del auto de apertura a juicio" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 141,
+                subject: 'administrativo',
+                text: "Compraventa de pintura, pasan 2 meses y no entregan. Queja en Profeco por...",
+                options: [
+                    { id: 'a', text: "Omisión de respetar obligaciones derivadas de relaciones de consumo" },
+                    { id: 'b', text: "Información errónea" },
+                    { id: 'c', text: "Divulgación de consumo" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 142,
+                subject: 'penal',
+                text: "Persona con SC sale al extranjero (prohibido). MP debe...",
+                options: [
+                    { id: 'a', text: "Emitir alerta migratoria" },
+                    { id: 'b', text: "Informar víctima" },
+                    { id: 'c', text: "Solicitar audiencia al juez para revocar" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 143,
+                subject: 'derechos_humanos',
+                text: "Queja en CNDH por multa de tránsito (alega libre tránsito). CNDH pide aclarar, quejoso no responde. CNDH debe...",
+                options: [
+                    { id: 'a', text: "enviar a archivo" },
+                    { id: 'b', text: "Tenerla por no presentada / Archivar por falta de interés" },
+                    { id: 'c', text: "tener por ciertos los hechos" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 144,
+                subject: 'penal',
+                text: "Imputado incumple condición de asistir a cursos en SC. Autoridad de supervisión debe...",
+                options: [
+                    { id: 'a', text: "solicitar audiencia" },
+                    { id: 'b', text: "asesor jurídico solicita" },
+                    { id: 'c', text: "Enviar reporte de incumplimiento a las partes (para que MP pida revocación)" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 145,
+                subject: 'laboral',
+                text: "Actuaria contratada por obra, además hace otras labores. Termina contrato y demanda. Conciliadora explica derecho a...",
+                options: [
+                    { id: 'a', text: "indemnización del 50%" },
+                    { id: 'b', text: "salario de 4 meses" },
+                    { id: 'c', text: "Pago de las prestaciones devengadas y proporcionales" }
+                ],
+                correct: 'c' // Ajustada según principios generales.
+            },
+            {
+                id: 146,
+                subject: 'penal',
+                text: "MP busca procedimiento abreviado por robo. Necesario que...",
+                options: [
+                    { id: 'a', text: "se solicite en inicial" },
+                    { id: 'b', text: "víctima renuncie a juicio" },
+                    { id: 'c', text: "víctima no presente oposición fundada" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 147,
+                subject: 'laboral',
+                text: "Trabajador renuncia a los 5 años, patrón solo paga días. Conciliadora propone solución con...",
+                options: [
+                    { id: 'a', text: "Indemnización" },
+                    { id: 'b', text: "Finiquito (Partes proporcionales)" },
+                    { id: 'c', text: "Prima de antigüedad" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 148,
+                subject: 'laboral',
+                text: "Sindicato: miembros limitados en reforma estatutos, comité elegido a escondidas. Solución procedente:",
+                options: [
+                    { id: 'a', text: "Conciliación" },
+                    { id: 'b', text: "Consulta a trabajadores" },
+                    { id: 'c', text: "Juicio especial colectivo (para nulidad de elecciones/estatutos)" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 149,
+                subject: 'civil',
+                text: "Concubino fallece, el otro quiere promover intestado. ¿Órgano no jurisdiccional para acreditar concubinato?",
+                options: [
+                    { id: 'a', text: "Juez civil" },
+                    { id: 'b', text: "Notario público" },
+                    { id: 'c', text: "Juez del registro civil / Autoridad administrativa" }
+                ],
+                correct: 'c' // En algunos estados puede ser notario, pero en vía admva es RC.
+            },
+            {
+                id: 150,
+                subject: 'penal',
+                text: "Imputado por robo simple. Partes deciden mecanismo donde facilitador propone solución a ambas. Es...",
+                options: [
+                    { id: 'a', text: "Arbitraje" },
+                    { id: 'b', text: "Mediación" },
+                    { id: 'c', text: "Conciliación (el conciliador puede proponer, el mediador no)" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 151,
+                subject: 'mercantil',
+                text: "Empresa de software y restaurante. Restaurante no paga. Supuesto de procedencia para arbitraje:",
+                options: [
+                    { id: 'a', text: "Contractual (Cláusula compromisoria)" },
+                    { id: 'b', text: "Título de crédito" },
+                    { id: 'c', text: "Legislativo" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 152,
+                subject: 'civil',
+                text: "Arrendatario siente afectada posesión. Usa mecanismo alterno pactado en contrato donde un tercero decide. Es...",
+                options: [
+                    { id: 'a', text: "Mediación" },
+                    { id: 'b', text: "Conciliación" },
+                    { id: 'c', text: "Arbitraje" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 153,
+                subject: 'mercantil',
+                text: "Personas inventan proceso para solventes de caña de azúcar tras 4 años. Quieren protegerlo. Acto:",
+                options: [
+                    { id: 'a', text: "Registro de modelo" },
+                    { id: 'b', text: "Diseño industrial" },
+                    { id: 'c', text: "Patente de invención" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 154,
+                subject: 'derechos_humanos',
+                text: "Paciente muere por falta atención urgente. Familiares en Conamed sin éxito. Van a órgano no jurisdiccional:",
+                options: [
+                    { id: 'a', text: "CEDH" },
+                    { id: 'b', text: "CNDH" },
+                    { id: 'c', text: "CIDH" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 155,
+                subject: 'penal',
+                text: "Menor abusado sexualmente por pariente. Madre denuncia. ¿Clase de víctima es la madre?",
+                options: [
+                    { id: 'a', text: "Directa" },
+                    { id: 'b', text: "Indirecta" },
+                    { id: 'c', text: "Potencial" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 156,
+                subject: 'penal',
+                text: "Propietario daña barda ($13,000). MP exhorta solución alterna elaborada por partes, con cumplimiento diferido. Solución es...",
+                options: [
+                    { id: 'a', text: "Acuerdo reparatorio" },
+                    { id: 'b', text: "SC" },
+                    { id: 'c', text: "Abreviado" }
+                ],
+                correct: 'a'
+            },
+            {
+                id: 157,
+                subject: 'penal',
+                text: "Juez concede SC, víctima considera que es adversa. Medio que procede contra resolución de SC:",
+                options: [
+                    { id: 'a', text: "Revocación" },
+                    { id: 'b', text: "Apelación" },
+                    { id: 'c', text: "Queja" }
+                ],
+                correct: 'b'
+            },
+            {
+                id: 158,
+                subject: 'laboral',
+                text: "Diferencia de opinión en sindicato sobre nombramiento de representante. ¿Solución a conflicto?",
+                options: [
+                    { id: 'a', text: "Demanda a Tribunal" },
+                    { id: 'b', text: "Apoyo a PROFEDET" },
+                    { id: 'c', text: "Intervención del Centro Federal de Conciliación y Registro Laboral" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 159,
+                subject: 'mercantil',
+                text: "Accionistas acuerdan terminar vida jurídica de sociedad. Corredor público tiene atribución de...",
+                options: [
+                    { id: 'a', text: "venta de acciones" },
+                    { id: 'b', text: "perito valuador" },
+                    { id: 'c', text: "intervenir para dar fe (Protocolizar)" }
+                ],
+                correct: 'c'
+            },
+            {
+                id: 160,
+                subject: 'mercantil',
+                text: "Autores forman Sociedad de Gestión Colectiva. Tras autorización INDAUTOR, para inscripción deben...",
+                options: [
+                    { id: 'a', text: "Inscribir acta" },
+                    { id: 'b', text: "atender observaciones" },
+                    { id: 'c', text: "Protocolización de estatutos y acta constitutiva" }
+                ],
+                correct: 'c'
             }
-            /* 
-               INSTRUCCIONES PARA AÑADIR MÁS PREGUNTAS:
-               Al agregar más preguntas, recuerda agregar la propiedad "subject" 
-               (e.g., 'laboral', 'civil', 'penal', 'amparo', 'mercantil', 'administrativo', 'electoral', 'agrario').
-            */
         ];
 
         /* =========================================================================
@@ -428,9 +1964,9 @@
             mode: '', // 'practice' | 'exam'
             questions: [],
             currentIndex: 0,
-            answers: {}, // Guardará { questionId: selectedOptionId }
+            answers: {}, 
             timerInterval: null,
-            timeElapsed: 0, // en segundos
+            timeElapsed: 0, 
 
             // Referencias DOM
             views: {
@@ -469,7 +2005,7 @@
                 this.showView('menu');
             },
 
-            // Inicia modo Práctica: Todas las preguntas, en orden, con feedback.
+            // Inicia modo Práctica: Todas las preguntas del filtro, en orden, con feedback.
             startPractice() {
                 this.mode = 'practice';
                 const selectedSubject = document.getElementById('subject-select').value;
@@ -492,7 +2028,7 @@
                 this.renderQuestion();
             },
 
-            // Inicia modo Simulador: Preguntas aleatorias, sin feedback, con temporizador.
+            // Inicia modo Simulador: Toma 20 aleatorias, sin feedback, con temporizador.
             startExam() {
                 this.mode = 'exam';
                 const selectedSubject = document.getElementById('subject-select').value;
@@ -509,8 +2045,11 @@
                     return;
                 }
 
-                // Mezclar las preguntas filtradas y tomar una muestra de hasta 20
-                this.questions = pool.sort(() => 0.5 - Math.random()).slice(0, 20);
+                // Mezclar el pool de preguntas usando un algoritmo simple
+                let shuffled = pool.sort(() => 0.5 - Math.random());
+                
+                // Extraer un máximo de 20 preguntas
+                this.questions = shuffled.slice(0, 20);
                 
                 this.currentIndex = 0;
                 this.answers = {};
@@ -548,15 +2087,12 @@
             renderQuestion() {
                 const q = this.questions[this.currentIndex];
                 
-                // Actualizar contadores y barra
-                this.ui.counter.textContent = `Pregunta ${this.currentIndex + 1} de ${this.questions.length}`;
+                this.ui.counter.textContent = `Pregunta ${this.currentIndex + 1} de ${this.questions.length} | ${q.subject.toUpperCase()}`;
                 const progressPct = ((this.currentIndex) / this.questions.length) * 100;
                 this.ui.progress.style.width = `${progressPct}%`;
                 
-                // Texto de la pregunta
                 this.ui.text.textContent = q.text;
                 
-                // Limpiar y generar opciones
                 this.ui.options.innerHTML = '';
                 q.options.forEach(opt => {
                     const btn = document.createElement('button');
@@ -564,15 +2100,11 @@
                     btn.innerHTML = `<span class="bg-slate-100 text-slate-500 rounded px-2 py-1 text-sm font-bold uppercase shrink-0">${opt.id}</span> <span>${opt.text}</span>`;
                     btn.onclick = () => this.selectOption(opt.id, btn);
                     
-                    // Si el usuario vuelve hacia atrás y ya había respondido (en el futuro si agregamos botón "Atrás")
-                    // O si ya la respondió, la marcamos.
-                    
                     this.ui.options.appendChild(btn);
                 });
 
-                // Deshabilitar botón Siguiente hasta que responda
                 this.ui.btnNext.disabled = true;
-                if(this.currentIndex === this.questions.length - 1 && this.mode === 'exam') {
+                if(this.currentIndex === this.questions.length - 1) {
                      this.ui.btnNext.textContent = 'Finalizar Examen';
                 } else {
                      this.ui.btnNext.textContent = 'Siguiente';
@@ -583,36 +2115,30 @@
                 const q = this.questions[this.currentIndex];
                 this.answers[q.id] = optId;
                 
-                // Habilitar botón siguiente
                 this.ui.btnNext.disabled = false;
-
                 const allButtons = this.ui.options.querySelectorAll('button');
 
                 if (this.mode === 'practice') {
-                    // MODO PRÁCTICA: Feedback Inmediato
-                    // Deshabilitar todos los botones
                     allButtons.forEach(b => { b.disabled = true; b.classList.add('opacity-70'); });
                     
-                    // Evaluar respuesta
                     if (optId === q.correct) {
                         btnElement.classList.remove('border-slate-200', 'hover:bg-slate-50', 'opacity-70');
                         btnElement.classList.add('border-green-500', 'bg-green-50', 'text-green-800', 'opacity-100');
                         btnElement.querySelector('span').classList.add('bg-green-500', 'text-white');
                     } else {
-                        // Marcar el error
                         btnElement.classList.remove('border-slate-200', 'opacity-70');
                         btnElement.classList.add('border-red-500', 'bg-red-50', 'text-red-800', 'opacity-100');
                         btnElement.querySelector('span').classList.add('bg-red-500', 'text-white');
                         
-                        // Buscar y resaltar la correcta
                         const correctIndex = q.options.findIndex(o => o.id === q.correct);
-                        const correctBtn = allButtons[correctIndex];
-                        correctBtn.classList.remove('border-slate-200', 'opacity-70');
-                        correctBtn.classList.add('border-green-500', 'bg-green-50', 'opacity-100');
-                        correctBtn.querySelector('span').classList.add('bg-green-500', 'text-white');
+                        if (correctIndex !== -1) {
+                            const correctBtn = allButtons[correctIndex];
+                            correctBtn.classList.remove('border-slate-200', 'opacity-70');
+                            correctBtn.classList.add('border-green-500', 'bg-green-50', 'opacity-100');
+                            correctBtn.querySelector('span').classList.add('bg-green-500', 'text-white');
+                        }
                     }
                 } else {
-                    // MODO EXAMEN: Solo selección visual
                     allButtons.forEach(b => {
                         b.classList.remove('border-blue-500', 'bg-blue-50');
                         b.classList.add('border-slate-200');
@@ -649,16 +2175,14 @@
                     const isCorrect = userAnswer === q.correct;
                     if (isCorrect) correctCount++;
 
-                    // Obtener textos para mostrar en la revisión
                     const correctOptText = q.options.find(o => o.id === q.correct)?.text || '';
                     const userOptText = userAnswer ? q.options.find(o => o.id === userAnswer)?.text : 'Sin responder';
 
-                    // Construir HTML de revisión
                     const div = document.createElement('div');
                     div.className = `p-4 rounded-lg border ${isCorrect ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'}`;
                     
                     div.innerHTML = `
-                        <p class="font-bold text-slate-800 mb-2">${index + 1}. ${q.text}</p>
+                        <p class="font-bold text-slate-800 mb-2">${index + 1}. [${q.subject.toUpperCase()}] ${q.text}</p>
                         <div class="text-sm">
                             <p class="${isCorrect ? 'text-green-700' : 'text-red-600'}"><strong>Tu respuesta:</strong> ${userOptText}</p>
                             ${!isCorrect ? `<p class="text-green-700 mt-1"><strong>Respuesta correcta:</strong> ${correctOptText}</p>` : ''}
@@ -667,7 +2191,6 @@
                     detailsContainer.appendChild(div);
                 });
 
-                // Actualizar tarjetas de puntuación
                 const total = this.questions.length;
                 const scorePct = Math.round((correctCount / total) * 100);
                 
@@ -675,7 +2198,6 @@
                 document.getElementById('res-correct').textContent = correctCount;
                 document.getElementById('res-incorrect').textContent = total - correctCount;
 
-                // Color del porcentaje según resultado
                 const scoreEl = document.getElementById('res-score');
                 scoreEl.className = `text-4xl font-extrabold ${scorePct >= 70 ? 'text-green-600' : (scorePct >= 50 ? 'text-yellow-600' : 'text-red-600')}`;
             }
