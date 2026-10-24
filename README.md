@@ -54,3 +54,6 @@ Se integró la respuesta **C (Ordinaria)** confirmada por el usuario para la pre
 ## Guía de estudio integrada
 
 La nueva sección **Guía de estudio** se sirve desde `estudio.js` y `guia-estudio.json`. Ambos archivos son necesarios en la raíz del repositorio, junto con `app.js`, `index.html` y `preguntas.json`. Incluye resúmenes educativos originales con referencias a las páginas de `egel-derecho 2026.pdf` y capítulos de `guía estudio ceneval .docx`; **no distribuye los documentos originales**. Tiene búsquedas, filtros, progreso de lectura independiente en `localStorage` y enlaces de práctica por materia. No contiene el texto completo de la guía comercial. Revisar vigencia normativa antes de tomar el contenido como asesoría jurídica o respuesta definitiva.
+
+## Identidad MAJO y uso en iPhone
+El encabezado ahora muestra **MAJO · Estudio Derecho**. El sitio tiene viewport adaptable, navegación que se acomoda en dos filas en pantallas pequeñas y metadatos para agregarlo a la pantalla de inicio de iOS. En Safari, usa Compartir → Agregar a pantalla de inicio. Sigue requiriendo internet y GitHub Pages para cargar las preguntas y librerías CDN. La identidad gráfica MAJO no es el logotipo oficial de IBERO.
