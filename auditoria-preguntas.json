@@ -1,0 +1,16 @@
+{
+  "summary": {
+    "total": 453,
+    "scorable": 453,
+    "unmatched": 0,
+    "user_submitted_answers": 78,
+    "legal_verification": "Las claves de usuario y del PDF no equivalen a verificación de vigencia jurídica"
+  },
+  "unmatched": [],
+  "lastResolved": {
+    "id": 61,
+    "answer": "C",
+    "source": "confirmación del usuario",
+    "legalVerified": false
+  }
+}

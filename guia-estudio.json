@@ -1,0 +1,783 @@
+{
+  "title": "Guía de estudio EGEL Plus Derecho",
+  "type": "resúmenes didácticos originales",
+  "disclaimer": "Síntesis propias con referencias para consultar los materiales aportados. No sustituyen las fuentes originales ni una auditoría de legislación vigente.",
+  "modules": [
+    {
+      "id": "constitucional",
+      "title": "Constitucional y amparo",
+      "topics": [
+        {
+          "id": "constitucional-1",
+          "title": "Supremacía y parámetro de regularidad",
+          "explanation": "Los derechos humanos reconocidos en la Constitución y en tratados integran el parámetro de regularidad constitucional. Ante posibles conflictos se busca una interpretación conforme que favorezca a la persona, considerando las restricciones constitucionales expresas.",
+          "remember": "Distingue jerarquía normativa, bloque de derechos y ámbito competencial.",
+          "pitfall": "No supongas que cualquier tratado equivale a una reforma constitucional.",
+          "basis": "CPEUM, arts. 1, 133; CT 293/2011.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 8
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 1
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "constitucional-2",
+          "title": "Interpretación conforme y control difuso",
+          "explanation": "El juzgador intenta una lectura compatible con Constitución y tratados antes de inaplicar una norma en un caso concreto. Inaplicar no es derogar ni expulsar una disposición con efectos generales.",
+          "remember": "Secuencia: interpretación conforme amplia, estricta y, de ser necesaria, inaplicación.",
+          "pitfall": "Una autoridad administrativa no ejerce el mismo poder de inaplicación que un juez.",
+          "basis": "CPEUM, arts. 1 y 133; expediente Varios 912/2010.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 10
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 1
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "constitucional-3",
+          "title": "Amparo directo e indirecto",
+          "explanation": "El amparo directo impugna por regla general sentencias definitivas, laudos o resoluciones que terminan el juicio, mientras el indirecto se dirige contra leyes, actos fuera de juicio y otros supuestos del artículo 107 de la Ley de Amparo.",
+          "remember": "Determina acto reclamado, autoridad, interés, definitividad y plazo antes de elegir vía.",
+          "pitfall": "No confundas la impugnación de una sentencia final con la de una orden de aprehensión.",
+          "basis": "CPEUM, arts. 103 y 107; Ley de Amparo, arts. 17, 107 y 170.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 12
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 7
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "constitucional-4",
+          "title": "Suspensión, recursos y causales de improcedencia",
+          "explanation": "La suspensión busca preservar la materia del litigio, ponderando riesgos y límites de interés público. La procedencia del amparo y los recursos dependen del acto y de la etapa procesal.",
+          "remember": "Separa suspensión provisional/definitiva de amparo concedido/negado.",
+          "pitfall": "La suspensión no equivale a ganar el juicio principal.",
+          "basis": "Ley de Amparo, arts. 61, 81 y siguientes, 125 y siguientes.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 20
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 7
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "constitucional-5",
+          "title": "Controversias y acciones de inconstitucionalidad",
+          "explanation": "La controversia atiende conflictos constitucionales competenciales y la acción permite cuestionar normas generales en abstracto por sujetos legitimados. Ambas se encuadran en el artículo 105.",
+          "remember": "Identifica legitimación, objeto, plazo y efectos de la sentencia.",
+          "pitfall": "No confundas efectos generales con los propios del control difuso.",
+          "basis": "CPEUM, art. 105 y ley reglamentaria.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 31
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 1
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "constitucional-6",
+          "title": "Estructura del Estado y derechos político-electorales",
+          "explanation": "La competencia federal, estatal y municipal se atribuye por Constitución y leyes generales. La tutela de los derechos político-electorales se tramita por vías electorales específicas.",
+          "remember": "Art. 115 servicios municipales; art. 124 facultades residuales; art. 99 justicia electoral.",
+          "pitfall": "No respondas amparo por inercia cuando el caso exige un medio electoral.",
+          "basis": "CPEUM, arts. 41, 99, 115 y 124.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 31
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 2
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        }
+      ]
+    },
+    {
+      "id": "civil",
+      "title": "Civil y familiar",
+      "topics": [
+        {
+          "id": "civil-1",
+          "title": "Fuentes de las obligaciones y contratos",
+          "explanation": "Una obligación conecta acreedor y deudor respecto de una prestación de dar, hacer o no hacer. En casos contractuales revisa consentimiento, objeto, forma exigida y efectos del incumplimiento.",
+          "remember": "Ubica existencia, validez y remedios antes de decidir el procedimiento.",
+          "pitfall": "No confundas rescisión, nulidad e inexistencia.",
+          "basis": "Código civil aplicable; reglas generales de contratos.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 39
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 11
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "civil-2",
+          "title": "Responsabilidad civil y daños",
+          "explanation": "La responsabilidad civil exige identificar el hecho, el daño, el nexo causal y el factor de atribución que corresponda. La cuantificación exige distinguir daño emergente, lucro cesante y daño moral.",
+          "remember": "Traza hecho → daño → relación causal → reparación.",
+          "pitfall": "No presupongas que cualquier incumplimiento genera automáticamente daño moral.",
+          "basis": "Código civil aplicable y criterios judiciales.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 45
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 11
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "civil-3",
+          "title": "Bienes, propiedad y posesión",
+          "explanation": "La propiedad atribuye facultades sobre un bien; la posesión describe una situación jurídicamente protegida. Las vías reivindicatorias, posesorias y registrales protegen intereses distintos.",
+          "remember": "Comprueba título, posesión y pretensión.",
+          "pitfall": "La mera posesión no acredita por sí sola la propiedad.",
+          "basis": "Legislación civil y registral aplicable.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 52
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 11
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "civil-4",
+          "title": "Familia, alimentos y divorcio",
+          "explanation": "Las obligaciones alimentarias se determinan a partir de necesidad y posibilidad, con especial tutela de niñas, niños y adolescentes. El divorcio puede requerir acuerdos sobre guarda, convivencia y patrimonio.",
+          "remember": "Interés superior de la niñez, medidas provisionales, patrimonio.",
+          "pitfall": "No incluyas liquidación de sociedad conyugal en un matrimonio de separación de bienes.",
+          "basis": "Código civil/familiar local y legislación procesal vigente.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 60
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 12
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "civil-5",
+          "title": "Sucesiones testamentaria e intestamentaria",
+          "explanation": "La sucesión testamentaria responde a voluntad válida del causante; la legítima opera cuando la ley llama a heredar por falta o insuficiencia de disposiciones. Identifica herederos, legatarios, albacea, inventario, administración y partición.",
+          "remember": "Orden de fases: reconocimiento → inventario → administración → partición.",
+          "pitfall": "No confundas albacea con heredero o adjudicación con apertura de sucesión.",
+          "basis": "Código civil y legislación procesal aplicables.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 66
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 12
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "civil-6",
+          "title": "Procedimiento civil y recursos",
+          "explanation": "Para resolver casos procesales distingue competencia, emplazamiento, etapas probatorias, resoluciones y el recurso que efectivamente contempla el código aplicable.",
+          "remember": "Identifica la naturaleza de la resolución antes de elegir apelación, revocación o queja.",
+          "pitfall": "El régimen procesal federal/local puede cambiar por la implementación del CNPCF.",
+          "basis": "Código Nacional de Procedimientos Civiles y Familiares y normas transitorias.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 70
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 11
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        }
+      ]
+    },
+    {
+      "id": "penal",
+      "title": "Penal",
+      "topics": [
+        {
+          "id": "penal-1",
+          "title": "Teoría del delito",
+          "explanation": "El análisis de un caso penal separa conducta, tipicidad, antijuridicidad, culpabilidad y punibilidad. Revisa dolo, culpa, error de tipo, error de prohibición y causas de justificación.",
+          "remember": "Primero determina si los hechos encajan en el tipo penal.",
+          "pitfall": "No equipares ausencia de dolo con inexistencia automática del delito.",
+          "basis": "Código penal aplicable; doctrina de teoría del delito.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 75
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 10
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "penal-2",
+          "title": "Derechos de imputados y víctimas",
+          "explanation": "La presunción de inocencia y el debido proceso orientan la investigación y el juicio. La víctima tiene facultades de participación, protección, asesoría y reparación; el imputado tiene defensa adecuada.",
+          "remember": "Distingue derechos de la persona imputada de los de la víctima.",
+          "pitfall": "La denuncia no constituye prueba plena de responsabilidad.",
+          "basis": "CPEUM, arts. 14, 16 y 20; CNPP.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 83
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 10
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "penal-3",
+          "title": "Etapas del procedimiento acusatorio",
+          "explanation": "El procedimiento comprende investigación, etapa intermedia y juicio; cada una tiene autoridades y actos propios. La formulación de imputación no equivale a sentencia.",
+          "remember": "Relaciona juez de control, tribunal de enjuiciamiento y apelación con su función.",
+          "pitfall": "No atribuyas al juez de control la función ordinaria de dictar sentencia de juicio oral.",
+          "basis": "Código Nacional de Procedimientos Penales.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 91
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 10
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "penal-4",
+          "title": "Medidas cautelares y recursos",
+          "explanation": "Las medidas cautelares tienen fines procesales y deben justificarse bajo las reglas aplicables. La impugnación de determinaciones depende de su naturaleza, oportunidad y supuestos de apelación.",
+          "remember": "Razona necesidad, proporcionalidad y alternativas.",
+          "pitfall": "No confundas prisión preventiva con pena anticipada.",
+          "basis": "CPEUM, art. 19; CNPP.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 97
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 10
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "penal-5",
+          "title": "Acuerdos reparatorios y terminación anticipada",
+          "explanation": "Los acuerdos reparatorios, la suspensión condicional del proceso y el procedimiento abreviado cumplen funciones distintas y tienen requisitos propios.",
+          "remember": "Identifica etapa, naturaleza del delito, consentimientos y efectos.",
+          "pitfall": "No todos los casos admiten todas las salidas alternas.",
+          "basis": "CNPP, disposiciones de soluciones alternas y formas anticipadas.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 100
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 17
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        }
+      ]
+    },
+    {
+      "id": "laboral",
+      "title": "Laboral y seguridad social",
+      "topics": [
+        {
+          "id": "laboral-1",
+          "title": "Relación laboral y prestaciones",
+          "explanation": "La subordinación es indicio central de una relación de trabajo. Para calcular prestaciones ubica antigüedad, salario, tipo de separación y conceptos devengados.",
+          "remember": "Distingue finiquito, indemnización, prima de antigüedad y salarios vencidos.",
+          "pitfall": "No supongas que renunciar genera automáticamente indemnización constitucional.",
+          "basis": "Ley Federal del Trabajo, arts. 20, 46-50, 76, 87 y 162.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 104
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 14
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "laboral-2",
+          "title": "Jornadas y tiempo extraordinario",
+          "explanation": "El tipo de jornada y sus límites modifican la compensación legal; el tiempo extraordinario exige identificar cuántas horas se laboraron y en qué condiciones.",
+          "remember": "Separa jornada diurna, nocturna, mixta, descanso y horas extra.",
+          "pitfall": "No apliques la misma tarifa a todo el exceso de horas sin revisar reglas legales.",
+          "basis": "Ley Federal del Trabajo, arts. 58-68.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 110
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 14
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "laboral-3",
+          "title": "Conciliación prejudicial y procedimiento",
+          "explanation": "En la mayor parte de conflictos individuales la conciliación prejudicial es una etapa previa, con excepciones. Los tribunales laborales conocen de litigios; la elección de procedimiento depende de la pretensión.",
+          "remember": "Determina primero si existe excepción a conciliación obligatoria.",
+          "pitfall": "No utilices automáticamente reglas de juntas de conciliación para casos regidos por el nuevo sistema.",
+          "basis": "LFT, reglas de conciliación y procedimiento.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 116
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 14
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "laboral-4",
+          "title": "Derecho colectivo y huelga",
+          "explanation": "La representatividad sindical, negociación colectiva y huelga tienen reglas de legitimación, objeto y procedimiento. Para evaluar procedencia, identifica finalidad, requisitos de aviso y votación.",
+          "remember": "Distingue contrato colectivo, constancia de representatividad y emplazamiento.",
+          "pitfall": "No supongas que la huelga requiere agotar toda conciliación prejudicial individual.",
+          "basis": "LFT, arts. 440 y siguientes.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 125
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 14
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "laboral-5",
+          "title": "Seguridad social y pensiones",
+          "explanation": "El acceso a prestaciones del IMSS o ISSSTE depende de régimen, aseguramiento, semanas o años cotizados y hecho generador. Las vías de defensa varían según el acto.",
+          "remember": "Separa atención médica, riesgos, invalidez, viudez y cesantía.",
+          "pitfall": "No equipares queja administrativa con recurso contra toda negativa de pensión.",
+          "basis": "Ley del Seguro Social; Ley del ISSSTE.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 131
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 9
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        }
+      ]
+    },
+    {
+      "id": "administrativo",
+      "title": "Administrativo y fiscal",
+      "topics": [
+        {
+          "id": "administrativo-1",
+          "title": "Acto administrativo y competencia",
+          "explanation": "La autoridad debe actuar con competencia y cumplir exigencias de legalidad, fundamentación y motivación. La nulidad de un acto exige identificar el vicio y la vía de defensa.",
+          "remember": "Pregunta quién emite, con qué facultad, qué hechos y qué norma aplica.",
+          "pitfall": "No confundas ausencia total de fundamento con aplicación incorrecta de una norma.",
+          "basis": "CPEUM, arts. 14 y 16; LFPA.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 135
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 6
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "administrativo-2",
+          "title": "Administración centralizada y paraestatal",
+          "explanation": "Las secretarías integran la administración centralizada; órganos desconcentrados y organismos descentralizados presentan distinta relación jerárquica y personalidad.",
+          "remember": "Distingue subordinación, personalidad jurídica y patrimonio.",
+          "pitfall": "No confundas SAT (desconcentrado) con IMSS (organismo descentralizado).",
+          "basis": "CPEUM, art. 90; LOAPF.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 140
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 2
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "administrativo-3",
+          "title": "Contribuciones y facultades fiscales",
+          "explanation": "En un caso tributario identifica sujeto, objeto, base, tasa o tarifa y época de pago. Las facultades de comprobación deben cumplir requisitos formales y temporales.",
+          "remember": "Diferencia visita domiciliaria, revisión de gabinete y revisión electrónica.",
+          "pitfall": "No confundas determinación de contribuciones con sanción o cobro coactivo.",
+          "basis": "CPEUM, art. 31-IV; CFF.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 148
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 6
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "administrativo-4",
+          "title": "Medios de defensa fiscal y TFJA",
+          "explanation": "El recurso de revocación y el juicio contencioso administrativo tienen reglas propias de procedencia y plazos; en ciertos supuestos existen mecanismos alternos como acuerdos conclusivos.",
+          "remember": "Identifica acto definitivo, autoridad emisora y pretensión.",
+          "pitfall": "No escojas amparo directo para combatir de inicio cualquier resolución del SAT.",
+          "basis": "CFF; Ley Federal de Procedimiento Contencioso Administrativo.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 156
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 9
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "administrativo-5",
+          "title": "Responsabilidad administrativa y servicios públicos",
+          "explanation": "Las responsabilidades se analizan según el tipo de conducta, servidor público, autoridad competente y sanción. El procedimiento administrativo no equivale al penal.",
+          "remember": "Diferencia faltas graves y no graves; investigación y resolución.",
+          "pitfall": "La misma conducta puede producir consecuencias administrativas y penales diferentes.",
+          "basis": "Ley General de Responsabilidades Administrativas.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 162
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 6
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        }
+      ]
+    },
+    {
+      "id": "mercantil",
+      "title": "Mercantil",
+      "topics": [
+        {
+          "id": "mercantil-1",
+          "title": "Acto de comercio, comerciantes y sociedades",
+          "explanation": "La materia mercantil utiliza criterios de actos de comercio y sujetos. Las sociedades requieren distinguir personalidad jurídica, representación y responsabilidad de socios.",
+          "remember": "Identifica naturaleza del acto y tipo de sociedad antes de escoger ley.",
+          "pitfall": "No confundas responsabilidad de la sociedad con la personal de todos los socios.",
+          "basis": "Código de Comercio; LGSM.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 165
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 13
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "mercantil-2",
+          "title": "Títulos y operaciones de crédito",
+          "explanation": "Pagaré, letra y cheque tienen requisitos, sujetos y formas de circulación distintos. La acción cambiaria procede conforme al título y su exigibilidad.",
+          "remember": "Recuerda literalidad, incorporación, legitimación y autonomía.",
+          "pitfall": "Un contrato subyacente no sustituye los requisitos formales del título.",
+          "basis": "Ley General de Títulos y Operaciones de Crédito.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 175
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 13
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "mercantil-3",
+          "title": "Vía ordinaria, ejecutiva y oral mercantil",
+          "explanation": "La vía depende del documento base de acción y del tipo de controversia. En la ejecutiva se requiere título con fuerza ejecutiva.",
+          "remember": "Distingue emplazamiento, embargo, pruebas y excepciones.",
+          "pitfall": "No escojas vía ejecutiva solo porque existe un adeudo sin título ejecutivo.",
+          "basis": "Código de Comercio y disposiciones transitorias.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 184
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 13
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "mercantil-4",
+          "title": "Recursos, notificaciones y caducidad",
+          "explanation": "La impugnación y la caducidad deben analizarse en función de la fase, naturaleza de la resolución y reglas del procedimiento que corresponda.",
+          "remember": "Verifica plazos y prohibiciones de recursos de la vía oral.",
+          "pitfall": "No trasplantes plazos de un procedimiento civil a uno mercantil.",
+          "basis": "Código de Comercio.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 192
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 13
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "mercantil-5",
+          "title": "Conciliación, arbitraje y consumo",
+          "explanation": "La elección entre vías judiciales y mecanismos alternativos depende del convenio, naturaleza mercantil de la controversia y fuerza del documento.",
+          "remember": "Distingue laudo arbitral, convenio ejecutable y reclamación ante Profeco.",
+          "pitfall": "Un acuerdo informal no siempre constituye título ejecutivo.",
+          "basis": "Código de Comercio; Ley Federal de Protección al Consumidor.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 198
+            },
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 16
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        }
+      ]
+    },
+    {
+      "id": "lenguaje",
+      "title": "Lenguaje y comunicación",
+      "topics": [
+        {
+          "id": "lenguaje-1",
+          "title": "Comprensión: idea central y propósito",
+          "explanation": "Lee primero la pregunta, localiza tesis y argumentos, y separa información explícita de inferencias. La respuesta válida debe apoyarse en el texto.",
+          "remember": "Identifica tema, postura y evidencia antes de elegir.",
+          "pitfall": "No selecciones la opción que suena verdadera fuera del pasaje pero no aparece sustentada.",
+          "basis": "Guía EGEL 2026, comprensión lectora.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 201
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "lenguaje-2",
+          "title": "Comprensión: inferencias y estructura",
+          "explanation": "Para inferir, combina pistas textuales sin añadir supuestos externos. El tipo de texto define cómo se relacionan datos, causas y conclusiones.",
+          "remember": "Busca conectores lógicos y relaciones causa-efecto.",
+          "pitfall": "Una opinión del lector no equivale a una inferencia demostrable.",
+          "basis": "Guía EGEL 2026, comprensión lectora.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 213
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "lenguaje-3",
+          "title": "Redacción indirecta: coherencia y cohesión",
+          "explanation": "Una oración debe integrarse al párrafo por progresión temática, referencia pronominal y conectores. Las mejores secuencias evitan saltos lógicos.",
+          "remember": "Ubica introducción, desarrollo y conclusión de cada fragmento.",
+          "pitfall": "No uses un conector adversativo si no existe contraste real.",
+          "basis": "Guía EGEL 2026, redacción indirecta.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 231
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "lenguaje-4",
+          "title": "Redacción: sintaxis, puntuación y norma",
+          "explanation": "Evalúa concordancia de sujeto y verbo, régimen preposicional, puntuación y ortografía. La corrección se valora junto con el registro adecuado.",
+          "remember": "Revisa referentes, concordancia, comas y tildes diacríticas.",
+          "pitfall": "Una oración larga no siempre es incorrecta; importa su organización sintáctica.",
+          "basis": "Guía EGEL 2026, redacción indirecta.",
+          "sources": [
+            {
+              "document": "egel-derecho 2026.pdf",
+              "page": 244
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        }
+      ]
+    },
+    {
+      "id": "agrario",
+      "title": "Temas complementarios: agrario y otras materias",
+      "topics": [
+        {
+          "id": "agrario-1",
+          "title": "Propiedad social y tribunales agrarios",
+          "explanation": "En conflictos de ejidos o comunidades identifica titularidad agraria, derechos parcelarios, asamblea y competencia de tribunales agrarios.",
+          "remember": "Separa restitución, conflictos de límites y derechos sucesorios agrarios.",
+          "pitfall": "La inscripción ante el RAN no sustituye en todos los casos una controversia jurisdiccional.",
+          "basis": "Ley Agraria; tribunales agrarios.",
+          "sources": [
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 15
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "agrario-2",
+          "title": "Protección al consumidor y usuarios financieros",
+          "explanation": "Profeco y Condusef conocen de materias diferentes: consumo y servicios financieros. Identifica la relación jurídica antes de elegir instancia.",
+          "remember": "Distingue conciliación, arbitraje y acción ante tribunales.",
+          "pitfall": "Una queja administrativa no produce por sí sola una sentencia judicial.",
+          "basis": "LFPC; Ley de Protección y Defensa al Usuario de Servicios Financieros.",
+          "sources": [
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 16
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "agrario-3",
+          "title": "Sistema no jurisdiccional de derechos humanos",
+          "explanation": "La CNDH emite recomendaciones y desarrolla actuaciones de protección no jurisdiccional. Debe distinguirse de tribunales y de la Corte Interamericana.",
+          "remember": "Identifica órgano, acto reclamado y naturaleza del pronunciamiento.",
+          "pitfall": "Una recomendación no equivale a una sentencia ejecutoriada.",
+          "basis": "CPEUM, art. 102 B; Ley de la CNDH.",
+          "sources": [
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 18
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        },
+        {
+          "id": "agrario-4",
+          "title": "Fe pública y propiedad intelectual",
+          "explanation": "Notarios, corredores públicos y registros cumplen funciones específicas. En propiedad intelectual diferencia derecho de autor de marcas y patentes.",
+          "remember": "Identifica autoridad o fedatario competente según el acto.",
+          "pitfall": "No confundir IMPI con INDAUTOR.",
+          "basis": "Ley Federal del Derecho de Autor; Ley Federal de Protección a la Propiedad Industrial.",
+          "sources": [
+            {
+              "document": "guía estudio ceneval .docx",
+              "chapter": 19
+            }
+          ],
+          "updated": "Revisar legislación, vigencia y criterios aplicables al supuesto concreto."
+        }
+      ]
+    }
+  ]
+}
